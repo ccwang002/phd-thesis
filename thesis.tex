@@ -1,7 +1,19 @@
 \documentclass{wustlthesis}
 
-\setmainfont{Times New Roman}               % Use Times New Roman
-\setmathfont{STIXTwoMath}[math-style=ISO]   % Use math font that matches Times New Roman
+% Custom fonts
+\setmainfont{SourceSerif4}[
+    Path=./fonts/source-serif/,
+    Ligatures=TeX,
+    UprightFont=*-Regular, ItalicFont=*-It,
+    BoldFont=*-Bold, BoldItalicFont=*-BoldIt
+]
+\setsansfont{SourceSans3}[
+    Path=./fonts/source-sans/,
+    Ligatures=TeX,
+    UprightFont=*-Regular, ItalicFont=*-It,
+    BoldFont=*-Bold, BoldItalicFont=*-BoldIt
+]
+\setmathfont{STIXTwoMath}[math-style=ISO]
 
 % Re-calculate the lengths of a text line using the current font
 \setlxvchars[\normalfont\normalsize]
@@ -63,10 +75,6 @@
 \setthesisschool{Division of Biology and Biomedical Sciences}
 \setthesisdepartment{Neurosciences}
 
-
-% Optional packages that are not required in the real thesis
-\usepackage{layout}     % Show page layout
-\usepackage{pifont}     % Extra symbols (optional if the main font has the symbols)
 
 
 \begin{document}
