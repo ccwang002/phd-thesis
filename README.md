@@ -6,9 +6,8 @@ Use LuaLaTex on Tex Live 2020 and later. For the BasicTeX distribution on macOS,
     sudo tlmgr install \
         latexmk \
         biber biblatex biblatex-nature \
-        csquotes \
         lualatex-math \
-        threeparttable
+        csquotes threeparttable siunitx
 
 Build the document by:
 
