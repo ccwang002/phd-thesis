@@ -1,0 +1,119 @@
+\documentclass{wustlthesis}
+
+\setmainfont{Times New Roman}               % Use Times New Roman
+\setmathfont{STIXTwoMath}[math-style=ISO]   % Use math font that matches Times New Roman
+
+% Re-calculate the lengths of a text line using the current font
+\setlxvchars[\normalfont\normalsize]
+\setxlvchars[\normalfont\normalsize]
+\checkandfixthelayout[classic]
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=black, urlcolor=blue, citecolor=black%
+}
+
+% Tables
+\usepackage{threeparttable}
+\usepackage{makecell}  % allow multiple lines in a table cell
+
+% Graphics
+\usepackage{graphicx}
+
+% Bibliography
+\usepackage[
+    backend=biber,
+    style=nature,
+    date=year,
+    isbn=false, url=false, doi=true,
+    minnames=1, maxnames=9,
+    backref=true
+]{biblatex}
+% rename bibliography section name
+\DefineBibliographyStrings{english}{
+    bibliography = {References},
+    backrefpage = {cited on p\adddot},
+    backrefpages = {cited on pp\adddot}}
+\urlstyle{same}
+
+% define the bibliography path
+\addbibresource{references.bib}
+
+
+% Configure title page
+\settitle{A Mock Thesis on the Proper Formatting of Dissertations and Theses for\\ Arts \& Sciences Graduate Students}
+\setauthor{Paige Turner}
+\setthesistype{Dissertation}
+\setthesisdegree{Doctor of Philosophy}
+\setthesisdegreeabbrv{Ph.D.}
+% Degree officially earn date must be in December, May, or August
+\setdegreeearnmonth{May}
+\setdegreeearnyear{2017}
+\setthesisadvisor{%
+    Katherine Davidsen, Chair\\
+    Michael Randolf, Co-Chair}
+\setthesiscommittee{%
+    Katherine Davidsen, Chair\\
+    Michael Randolf, Co-Chair\\
+    Richard Lewis\\
+    Hillary O’Connell\\
+    Jack Taylor}
+\setthesisschool{Division of Biology and Biomedical Sciences}
+\setthesisdepartment{Neurosciences}
+
+
+% Optional packages that are not required in the real thesis
+\usepackage{layout}     % Show page layout
+\usepackage{pifont}     % Extra symbols (optional if the main font has the symbols)
+
+
+\begin{document}
+
+\thetitlepage                       % Title page
+\frontmatter
+\thesiscopyright{%                  % Thesis copyright page
+    \textcopyright~\degreeearnyear, Paige Turner}
+
+\SingleSpacing*
+\setSingleSpace{1.15}
+\tableofcontents*                   % Table of contents (ToC)
+\listoffigures                      % List of figures (LoF)
+\listoftables                       % List of tables (LoT)
+
+\DoubleSpacing
+\include{thesis-acknowledgments}    % Acknowledgements
+\thesisdedication{%                 % Dedication page
+    Dedicated to my parents.}
+
+\begin{abstract}
+After removing these comments, begin typing the body of your abstract here, double-spaced.  Your
+font should be 12-point (which is the text of this sample paragraph). No part of the abstract
+should be bolded. If this is for your master's degree, be sure to change all occurrences of the word
+``dissertation'' to display as ``thesis,'' and change ``Doctor of Philosophy'' or ``Doctor of
+Liberal Arts'' to ``Master of Arts,'' ``Master of Liberal Arts,'' or ``Master of Fine Arts,''
+whichever applies.  In the abstract heading above, make sure you use the year your degree is to be
+officially earned. Be sure to use your full name as it is recorded in WebSTAC, your dissertation or
+thesis advisor's full name(s) wherever appropriate, and the correct title of your degree whenever
+referencing it.  The title of your degree will not always be the same as the title of your
+department or program, so please check with your departmental administrative assistant and
+advisor(s) to be sure you are using the correct degree title.  Please note that an abstract is
+required for all dissertation submissions in ProQuest. An abstract is optional for master's thesis
+submissions.
+\end{abstract}
+
+\mainmatter
+\pagestyle{main}
+\include{thesis-chapter-structure}
+% \include{thesis-chapter-format}
+
+\begin{SingleSpace}
+\printbibliography
+\nocite{*}
+\end{SingleSpace}
+
+\appendix
+% \include{appendix}
+
+\end{document}
