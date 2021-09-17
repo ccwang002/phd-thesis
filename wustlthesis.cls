@@ -13,7 +13,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
-\ProvidesClass{wustlthesis}[2021/09/12 WUSTL thesis/dissertation template]
+\ProvidesClass{wustlthesis}[2021/09/16 WUSTL thesis/dissertation template]
 
 
 % ---- Define Page Layout -----------------------------------------------------
@@ -136,10 +136,11 @@
 \newcommand{\setthesisdegree}[1]{\def\thesisdegree{#1}}
 \newcommand{\setthesisdegreeabbrv}[1]{\def\thesisdegreeabbrv{#1}}
 % Degree officially earn date must be in December, May, or August
-\newcommand{\setdegreeearnmonth}[1]{\def\degreeearnmonth{#1}}
-\newcommand{\setdegreeearnyear}[1]{\def\degreeearnyear{#1}}
+\newcommand{\setdegreedatemy}[2]{%
+    \def\degreeearnmonth{#1}
+    \def\degreeearnyear{#2}}
 
-\newcommand{\setthesisadvisor}[1]{\def\thesisadvisor{#1}}
+\newcommand{\setthesisadvisorwithtitle}[1]{\def\thesisadvisorwithtitle{#1}}
 \newcommand{\setthesiscommittee}[1]{\def\thesiscommittee{#1}}
 \newcommand{\setthesisschool}[1]{\def\thesisschool{#1}}
 \newcommand{\setthesisdepartment}[1]{\def\thesisdepartment{#1}}
@@ -229,7 +230,7 @@
         \thesisschool \\
         \thesisdepartment \\
         Washington University in St.~Louis, \degreeearnyear \\
-        \thesisadvisor%
+        \thesisadvisorwithtitle%
     }}
 \renewcommand{\absnamepos}{center}
 \renewcommand{\abstractnamefont}{%
