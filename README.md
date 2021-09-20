@@ -15,5 +15,5 @@ Build the document by:
 
 Clean up intermediate files by:
 
-    latexmk -C
-    latexmk -CA  # also remove the built PDF
+    latexmk -c
+    latexmk -C  # also remove the built PDF
