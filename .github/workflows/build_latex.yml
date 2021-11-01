@@ -7,13 +7,13 @@ jobs:
     - name: Check out Git Repository
       uses: actions/checkout@v2
 
-    - name: Cache LuaTex fonts
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-luatex
-      with:
-        path: /opt/texlive/texdir/texmf-var/luatex-cache
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
+    # - name: Cache LuaTex fonts
+    #   uses: actions/cache@v2
+    #   env:
+    #     cache-name: cache-luatex
+    #   with:
+    #     path: /opt/texlive/texdir/texmf-var/luatex-cache
+    #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
 
     - name: Build LaTeX files
       uses: xu-cheng/latex-action@v2
