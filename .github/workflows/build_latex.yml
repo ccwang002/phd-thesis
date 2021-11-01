@@ -10,12 +10,12 @@ jobs:
     - name: Cache LuaTex fonts
       uses: actions/cache@v2
       env:
-          cache-name: cache-luatex
+        cache-name: cache-luatex
       with:
-          path: /opt/texlive/texdir/texmf-var/luatex-cache
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
-      restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+        path: /opt/texlive/texdir/texmf-var/luatex-cache
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
 
     - name: Build LaTeX files
       uses: xu-cheng/latex-action@v2
