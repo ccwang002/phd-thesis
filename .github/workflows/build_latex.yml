@@ -1,6 +1,9 @@
 name: Build LaTeX PDF
 on: push
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
     - name: Check out Git Repository
       uses: actions/checkout@v2
 
