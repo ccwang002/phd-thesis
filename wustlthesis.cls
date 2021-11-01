@@ -61,9 +61,9 @@
 % Chapter style
 \makechapterstyle{thesis}{%
     \chapterstyle{tandh}
-    \renewcommand*{\chapnamefont}{\normalfont\huge\bfseries}
-    \renewcommand*{\chapnumfont}{\normalfont\huge\bfseries}
-    \renewcommand*{\chaptitlefont}{\normalfont\huge\bfseries}
+    \renewcommand*{\chapnamefont}{\normalfont\LARGE\bfseries}
+    \renewcommand*{\chapnumfont}{\normalfont\LARGE\bfseries}
+    \renewcommand*{\chaptitlefont}{\normalfont\LARGE\bfseries}
     \renewcommand*{\printchaptername}{%
         \OnehalfSpacing\centering\chapnamefont\chaptername\ }
     \renewcommand*{\printchapternum}{\thechapter:\ }
