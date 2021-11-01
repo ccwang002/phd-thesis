@@ -15,7 +15,7 @@ jobs:
 
     - name: Check if PDF file is generated
       run: |
-        file cv.pdf | grep -q ' PDF '
+        file thesis.pdf | grep -q ' PDF '
 
     - name: Upload PDF
       uses: actions/upload-artifact@v2
