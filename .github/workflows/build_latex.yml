@@ -14,8 +14,6 @@ jobs:
       with:
         path: /opt/texlive/texdir/texmf-var/luatex-cache
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
 
     - name: Build LaTeX files
       uses: xu-cheng/latex-action@v2
@@ -30,5 +28,5 @@ jobs:
     - name: Upload PDF
       uses: actions/upload-artifact@v2
       with:
-        name: thesis.pdf
+        name: PDF
         path: thesis.pdf
