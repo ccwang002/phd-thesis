@@ -31,6 +31,8 @@
     colorlinks=true,
     linkcolor=black, urlcolor=blue, citecolor=black%
 }
+% default URL style
+\urlstyle{same}
 
 % Tables
 \usepackage{threeparttable}
@@ -53,8 +55,7 @@
     bibliography = {References},
     backrefpage = {cited on p\adddot},
     backrefpages = {cited on pp\adddot}}
-\urlstyle{same}
-% disable print out pubmed eprinttype
+% hide PubMed ID (pmid:xxx) in the bibliography
 \DeclareFieldFormat{eprint:pmid}{}
 
 % define the bibliography path
@@ -104,7 +105,7 @@
 \listoftables                       % List of tables (LoT)
 
 \DoubleSpacing
-\include{acknowledgments}    % Acknowledgements
+\include{acknowledgments}           % Acknowledgements
 \thesisdedication{%                 % Dedication page
     Dedicated to my parents.}
 \include{abstract}
