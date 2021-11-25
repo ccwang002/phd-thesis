@@ -15,5 +15,6 @@
             "env": {}
         }
     ],
-    "editor.wordWrap": "bounded"
+    "editor.wordWrap": "bounded",
+    "latex-workshop.intellisense.citation.backend": "biblatex"
 }
