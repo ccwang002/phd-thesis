@@ -16,15 +16,15 @@
 \setmathfont{STIXTwoMath}[math-style=ISO]
 
 % Enable refinements of typographics
-\usepackage[activate=true]{microtype}
-\microtypesetup{
-    babel=true, % enable language-specific kerning.
-    final,      % enable microtype even in the draft mode
+\usepackage[
+    activate=true,
+    disable=false,  % enable microtype even in the draft mode
+    babel=true,     % enable language-specific kerning.
     % skip patching footnote due to
     % incompability of microtype with memoir + hyperref
     % see https://github.com/schlcht/microtype/issues/2
-    nopatch=footnote,
-}
+    nopatch=footnote
+]{microtype}
 % Tweak Source Serif font like Times
 % \DeclareMicrotypeAlias{SourceSerif4}{ptm}
 
