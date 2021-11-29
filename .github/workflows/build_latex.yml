@@ -12,6 +12,9 @@ jobs:
       with:
         root_file: thesis.tex
         latexmk_use_lualatex: true
+        pre_compile: |
+            tlmgr update --self
+            tlmgr update --all
 
     - name: Check if PDF file is generated
       run: |
