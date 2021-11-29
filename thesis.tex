@@ -1,5 +1,14 @@
 \documentclass{wustlthesis}
 
+% Enable refinements of typographics
+\usepackage[activate=true]{microtype}
+\microtypesetup{
+    % skip patching footnote due to
+    % incompability of microtype with memoir + hyperref
+    % see https://github.com/schlcht/microtype/issues/2
+    nopatch=footnote,
+}
+
 % Custom fonts
 \setmainfont{SourceSerif4}[
     Path=./fonts/source-serif/,
