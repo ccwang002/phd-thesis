@@ -16,5 +16,6 @@
         }
     ],
     "editor.wordWrap": "bounded",
-    "latex-workshop.intellisense.citation.backend": "biblatex"
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.latex.rootFile.useSubFile": false
 }
