@@ -54,6 +54,14 @@
 % Graphics
 \usepackage{graphicx}
 
+% Subcaptions
+% The caption format is "Figure 1. Some caption. (A) subcaption. (B) subcaption".
+% And the label reference format is "Figure 1A".
+\usepackage{subcaption}
+\renewcommand\thesubfigure{\Alph{subfigure}}
+\renewcommand\thesubtable{\Alph{subtable}}
+\captionsetup{subrefformat=parens}
+
 % Bibliography
 \usepackage[
     backend=biber,
