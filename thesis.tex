@@ -55,12 +55,18 @@
 \usepackage{graphicx}
 
 % Subcaptions
-% The caption format is "Figure 1. Some caption. (A) subcaption. (B) subcaption".
+% The caption format is "Figure 1. Main. (A) xxx. (B) yyy".
 % And the label reference format is "Figure 1A".
 \usepackage{subcaption}
 \renewcommand\thesubfigure{\Alph{subfigure}}
 \renewcommand\thesubtable{\Alph{subtable}}
 \captionsetup{subrefformat=parens}
+
+% Allowing subcaptions when all figure panels are combined
+% into one source image. Based on https://tex.stackexchange.com/a/255790
+\newcommand{\labelphantom}[1]{%
+    \parbox{0pt}{\phantomsubcaption\label{#1}}%
+}
 
 % Bibliography
 \usepackage[
