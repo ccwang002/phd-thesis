@@ -56,7 +56,7 @@ MC3 reported 22,402 recoverable unique (the dark blue region in \fref{fig:mut-ca
 
 To understand whether the overlap between GDC hg38 and MC3 hg19 somatic mutation calls varies across different samples and cancer types, we calculated the proportion of shared calls over all GDC and MC3 somatic calls for every sample (\fref{fig:mut-call-qc-overlap}). Overall, we observed that different cancer types exhibited very different levels of concordance. COAD samples had the largest fraction of concordant calls, where 243 out of the total 376 samples (88\%) had a higher shared call percentage than the median in both GDC and MC3. In contrast, LAML samples exhibited the worst concordance between the two groups, which may be due to this cohort having incomplete demultiplexing, and using Whole Genome Amplification (WGA) in library construction \cite{bodinim_rival:HiddenGenomic2015}.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
     \centering
     \phantomlabel{fig:mut-call-qc-supp-unrecoverable-unique-calls-gdc}
     \phantomlabel{fig:mut-call-qc-supp-unrecoverable-unique-calls-mc3}
@@ -72,7 +72,42 @@ To understand whether the overlap between GDC hg38 and MC3 hg19 somatic mutation
     \label{fig:mut-call-qc-supp}
 \end{figure}
 
-From our analysis, we found that 79\% of all the public somatic mutation calls from two groups were concordant. When we excluded LAML samples, 80\% of all the public somatic calls were concordant, and the average of the fraction of concordant calls per sample improved from 72.5\% to 75.9\%. We were able to explain the remaining non-concordant public mutation calls by the three major sources of the differences: for unrecoverable unique calls, mutation caller; for recoverable unique calls, filtering strategy and gene annotation version.
+From our analysis, we found that 79\% of all the public somatic mutation calls from two groups were concordant. When we excluded LAML samples, 80\% of all the public somatic calls were concordant, and the average of the fraction of concordant calls per sample improved from 72.5\% to 75.9\%. We were able to explain the remaining non-concordant public mutation calls by the three major sources of the differences: for unrecoverable unique calls, mutation caller; for recoverable unique calls, filtering strategy and gene annotation version. The detailed list of the non-concordant mutation calls and explanation is available at \url{https://gdc.cancer.gov/about-data/publications/HG38QC}.
+
+\section{Methods}
+Throughout the decade that spanned the TCGA project, somatic mutation calling has been constantly improved and all the accumu- lated knowledge was recently applied to a harmonized set of mutation calls across all TCGA samples: the Multi-Center Mutation Calling in Multiple Cancers (MC3) project, as a part of the TCGA Pan-Cancer Atlas effort. The unified MC3 somatic mutations were called using standardized protocols and annotated with various filters to detect potential sequencing artifacts and label low quality variant calls. Two centers, DNAnexus and FIREHOSE, generated somatic mutation calls for each pipeline (7 tools) on each sample (> 10,000 tumor-normal pairs), from 33 cancer types \cite{ellrottk_tcga:MC3MutationCalling2018}. The tool developers supplied the identification of tool-specific, sample-specific, and mutation-specific filters. The filter flags were present in a comma separated column which were carried through to the mutation annotation file (MAF). These mutation calls supply the basis for many PanCancer Atlas analysis working groups.
+
+Despite the uniformity, the MC3 pipeline was designed for the human genome reference hg19. On the other hand, GDC has developed a different somatic mutation calling pipeline for a newer human genome reference version, hg38. The GDC pipeline was designed to be fully automatic. Therefore, whenever an algorithm of variant calling or filtering gets improved, GDC can generate an updated set of uniform variant calls across all samples by updating the data release version.
+
+\subsection{Data Source}
+GDC MAFs in hg38 were obtained through the GDC Data Portal. GDC version 12.0 was used, which was released in June 2018. The query for the file retrieval was:
+
+\par\noindent\begin{verbatim}
+    cases.project.project_id
+    in ["TCGA-LAML", "TCGA-BRCA", "TCGA-COAD", "TCGA-OV"]
+    and files.data_format = "MAF"
+\end{verbatim}
+
+The query returned both somatic and protected MAFs, totaling 32 files and covering 2,069 tumor and paired normal samples. Note that protected somatic mutation calls did not reflect the full pool of germline variants. Protected MAFs contained the raw mutation calls from all somatic mutation callers. Each protected MAF underwent various filters to remove calls of low quality or potential germline variants reported in the germline variant databases like dbSNP \cite{sherryst_sirotkink:dbSNP2001} and Exome Aggregation Consortium (ExAC) \cite{lekm_exomeaggregationconsortium:AnalysisProteincoding2016}. Germline variant calling used a different algorithm, thus not all the germline variants would be captured in the protect MAFs, which is beyond the scope of our study.
+
+TCGA MC3 MAFs were obtained from Synapse (somatic: syn7214402; protected: syn5917256). The genomic coordinates of MC3 variant calls were lifted over from hg19 to hg38 using CrossMap v0.2.7 and chain files from University of California, Santa Cruz (UCSC). Variant calls that could not be lifted over were dropped and excluded from our analysis. Among the four cancer types, 1,902 samples that had somatic mutation calls from both MC3 and GDC were used for the rest of the comparison.
+
+\subsection{Mutational Calling Pipelines}
+The GDC variant calling pipeline of release 12.0 was described as follows: the pipeline started with genome re-alignment to GRCh38.d1.vd1 by extracting sequencing reads from a sample's BAM files using Biobambam. The re-aligned BAM files were merged and cleaned up using Picard and GATK. Four tools were used for the variant calling: MuSE, MuTect2, VarScan2, and SomaticSniper. MuTect employed a ``Panel of Normals'' (PoN) to reduce the rate of germline variant call and, more often, recurrent sequencing artifacts. The PoN was selected from the TCGA blood normal genomes curated to be cancer-free. VarScan and MuTect are also able to generate indel calls, which were collected together with the single nucleotide variant (SNV) calls. Variant calls were annotated using Variant Effect Predictor (VEP) version 84, which was based on GENCODE version 22. Various filters were added to both MAF and Variant Call Format (VCF) files during the annotation. Please refer to the following GDC documentation for more details:
+
+\tightlists
+\begin{itemize}
+    \tightlist
+    \item \href{https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/}{File Format: MAF}
+    \item \href{https://docs.gdc.cancer.gov/Data/File_Formats/VCF_Format/}{File Format: VCF}
+    \item \href{https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow}{Bioinformatics Pipeline: DNA-Seq Workflow--Somatic Variant Calling Workflow}
+\end{itemize}
+\defaultlists
+
+Complete details of the MC3 variant calling pipeline were provided in the MC3 publication \cite{ellrottk_tcga:MC3MutationCalling2018}, with the key aspects as follows. Non hg19 aligned samples were excluded from the pipeline. Implementation of these tools were performed by DNAnexus including SomaticSniper Larson et al., 2012), MuSE (Fan et al., 2016), Pindel (Ye et al., 2016), Radia (Radenbaugh et al., 2014), and Varscan (Koboldt et al., 2012) and by Broad Institute including MuTect (Cibulskis et al., 2013) and Indelocator. Filtering for each tool was provided by the tool developers. Filtered VCFs were merged and converted to MAF. During the conversion, annotations were provided by many databases such as Ensembl version 75, GENCODE v19 using Variant Effect Predictor (VEP) version 82. A Panel of Normals (filter flag: \texttt{broad\_PoN\_v2}) was also used. Sample level annotations were also added to the MAF, including additional filters: \texttt{gapfillter}, \texttt{contest}, \texttt{badseq}, \texttt{nonpreferredpair}, and \texttt{wga}. The MAF file was then split to 2 MAFs. A flagged MAF available to the public, and a protected MAF harboring all mutations that were merged after flagging potential artifacts.
+
+\subsection{Comparative Analysis}
+The variant call overlap between GDC and MC3 was done by matching their genomic location and tumor allele 2. To identify the potential causes for the unique calls in the two groups, we investigate the overlap result in the following subsets: unique calls in each group, sample-wise overlap, and recoverable unique calls in each group. To understand whether the overlap between GDC and MC3 calls varies across different samples and cancer types, we calculated the proportion of shared calls over total GDC and MC3 calls for every sample.
 
 
 \section{Discussion}
