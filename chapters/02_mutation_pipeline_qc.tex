@@ -143,4 +143,70 @@ Complete details of the MC3 variant calling pipeline were provided in the MC3 pu
 \subsection{Comparative Analysis}
 The variant call overlap between GDC and MC3 was done by matching their genomic location and tumor allele 2. To identify the potential causes for the unique calls in the two groups, we investigate the overlap result in the following subsets: unique calls in each group, sample-wise overlap, and recoverable unique calls in each group. To understand whether the overlap between GDC and MC3 calls varies across different samples and cancer types, we calculated the proportion of shared calls over total GDC and MC3 calls for every sample.
 
+\subsection{Code and Data Availability}
+The scripts to generate the mutation matching between GDC and MC3 pipelines and conduct all related analyses can be found at \url{https://github.com/ding-lab/gdc_qc_analysis}. All MAF files used in the analysis can be found in \tref{tab:mut-call-qc-data-src}.
 
+\begin{table}[tbp]
+    \centering
+    \caption{Somatic Mutation MAF file manifests.}
+    \label{tab:mut-call-qc-data-src}
+
+    \footnotesize
+    \begin{subtable}{1\linewidth}
+        \centering
+        \subcaption{GDC}\label{tab:mut-call-qc-data-src-gdc}
+        \begin{tabular}{lllr}
+            \toprule
+            Cancer type & Mutation caller & Access & File UUID \\
+            \midrule
+            BRCA & MuSE & controlled & \texttt{cd0d1636-ae95-4141-94b3-8218eb3b8b25} \\
+            BRCA & MuTect & controlled & \texttt{053f01ed-3154-4aea-9e7f-932c435034b3} \\
+            BRCA & SomaticSniper & controlled & \texttt{f9ff49e9-31ce-4051-9157-4bf4b0c5859a} \\
+            BRCA & VarScan & controlled & \texttt{5a6c3396-8c49-4c25-8a86-7ae63a887c43} \\
+            COAD & MuSE & controlled & \texttt{1eabb7b5-66b5-403c-b5ca-d1b83acfad33} \\
+            COAD & MuTect & controlled & \texttt{1e560f0b-cbc5-4e50-96b0-c096394acb2b} \\
+            COAD & SomaticSniper & controlled & \texttt{08a28aec-5502-4cdc-b668-62b11f8f5bc2} \\
+            COAD & VarScan & controlled & \texttt{b453bdde-d1c1-460c-9a70-d87c656f1a7b} \\
+            LAML & MuSE & controlled & \texttt{b85b532a-45ae-4510-88f8-11e5bcbe72dd} \\
+            LAML & MuTect & controlled & \texttt{66124158-7feb-4b8e-8fc4-393a5e641fea} \\
+            LAML & SomaticSniper & controlled & \texttt{5292b256-4db8-49dc-8952-c048a4fe4c5a} \\
+            LAML & VarScan & controlled & \texttt{799ea420-6768-42e8-8544-ce7a81ab54fd} \\
+            OV & MuSE & controlled & \texttt{1cb59aef-ef3f-4367-9a3d-f33f7fb93e40} \\
+            OV & MuTect & controlled & \texttt{e6ea3b5e-48fc-4155-81f6-4ffe59871d5a} \\
+            OV & SomaticSniper & controlled & \texttt{4683fdc3-2041-4b03-9886-fd035ab64c4f} \\
+            OV & VarScan & controlled & \texttt{04da990e-67a3-4ead-ab08-448c7118624c} \\
+            BRCA & MuSE & open & \texttt{b8ca5856-9819-459c-87c5-94e91aca4032} \\
+            BRCA & MuTect & open & \texttt{995c0111-d90b-4140-bee7-3845436c3b42} \\
+            BRCA & SomaticSniper & open & \texttt{7dd592e3-5950-4438-96d5-3c718aca3f13} \\
+            BRCA & VarScan & open & \texttt{6c93f518-1956-4435-9806-37185266d248} \\
+            COAD & MuSE & open & \texttt{70cb1255-ec99-4c08-b482-415f8375be3f} \\
+            COAD & MuTect & open & \texttt{03652df4-6090-4f5a-a2ff-ee28a37f9301} \\
+            COAD & SomaticSniper & open & \texttt{70835251-ddd5-4c0d-968e-1791bf6379f6} \\
+            COAD & VarScan & open & \texttt{8177ce4f-02d8-4d75-a0d6-1c5450ee08b0} \\
+            LAML & MuSE & open & \texttt{0cdf3c70-ad58-462d-b6ba-5004b26c618e} \\
+            LAML & MuTect & open & \texttt{27f42413-6d8f-401f-9d07-d019def8939e} \\
+            LAML & SomaticSniper & open & \texttt{99c2a8ba-1930-4dc7-ad71-7883eb7e29a9} \\
+            LAML & VarScan & open & \texttt{e595f93d-41ac-435e-8c90-06df7e9d6742} \\
+            OV & MuSE & open & \texttt{51423d79-e9c5-4c4d-b12c-99c1338dbd43} \\
+            OV & MuTect & open & \texttt{b22b85eb-2ca8-4c9f-a1cd-b77caab999bd} \\
+            OV & SomaticSniper & open & \texttt{3e48014d-ce4a-4937-bba4-13eaf631a64a} \\
+            OV & VarScan & open & \texttt{a8f41106-633d-4027-9e1f-e73bfd48f11e} \\
+        \bottomrule
+        \end{tabular}
+    \end{subtable}
+
+    \vspace{\baselineskip}
+
+    \begin{subtable}{1\linewidth}
+        \centering
+        \subcaption{MC3}\label{tab:mut-call-qc-data-src-mc3}
+        \begin{tabular}{llr}
+            \toprule
+            Access & Synapse ID & File UUID  \\
+            \midrule
+            open & syn7214402 & \texttt{1c8cfe5f-e52d-41ba-94da-f15ea1337efc} \\
+            controlled  & syn5917256 & \texttt{8b851024-2915-4d66-8a84-d03199b616fd} \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+\end{table}
