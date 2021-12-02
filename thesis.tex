@@ -20,13 +20,29 @@
     activate=true,
     disable=false,  % enable microtype even in the draft mode
     babel=true,     % enable language-specific kerning.
-    % skip patching footnote due to
-    % incompability of microtype with memoir + hyperref
-    % see https://github.com/schlcht/microtype/issues/2
-    nopatch=footnote
 ]{microtype}
 % Tweak Source Serif font like Times
 % \DeclareMicrotypeAlias{SourceSerif4}{ptm}
+% Patch footnote differently
+% see https://github.com/schlcht/microtype/issues/2
+\microtypesetup{nopatch=footnote}
+\makeatletter
+\catcode`\#=12
+  \MT@define@patch{footnote1}{%
+    \@ifpackageloaded{hyperref}{%
+      \MT@patch@patch\@footnotetext{\ignorespaces}{\ignorespaces\leftprotrusion}%
+      \MT@patch@patch\@footnotetext{\@empty\ignorespaces}{\@empty\ignorespaces\leftprotrusion}%
+    }{%
+      \@ifpackageloaded{scrbase}
+        {\MT@patch@patch\scr@saved@footnotetext{\ignorespaces}{\ignorespaces\leftprotrusion}}
+        {\MT@patch@patch\@footnotetext{\ignorespaces}{\ignorespaces\leftprotrusion}%
+         \@ifclassloaded{memoir}
+           {\MT@patch@patch\@footnotetext{\foottextfont #1}{\foottextfont\leftprotrusion #1}}
+           {}}%
+    }%
+  }{}%
+\catcode`\#=6
+\makeatother
 
 % Re-calculate the lengths of a text line using the current font
 \setlxvchars[\normalfont\normalsize]
