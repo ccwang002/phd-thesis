@@ -84,6 +84,15 @@
     \parbox{0pt}{\phantomsubcaption\label{#1}}%
 }
 
+% Add a note for figure caption spanning multiple pages
+\newcommand{\legendcontdnote}{%
+    \footnotesize\itshape%
+    \sourceatright[2em]{(legend continued on next page)}%
+}
+\newcommand{\legendcontdref}[1]{%
+    \emph{(\fref{#1} continued)}%
+}
+
 % Bibliography
 \usepackage[
     backend=biber,
