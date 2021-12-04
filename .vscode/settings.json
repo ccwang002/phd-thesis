@@ -19,5 +19,14 @@
     "latex-workshop.intellisense.citation.backend": "biblatex",
     "latex-workshop.latex.rootFile.useSubFile": false,
     "latex-workshop.message.error.show": false,
-    "latex-workshop.message.warning.show": false
+    "latex-workshop.message.warning.show": false,
+    "cSpell.enabled": true,
+    "cSpell.customDictionaries": {
+        "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:phd-thesis}/.vscode/custom-dictionary.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
+    }
 }
