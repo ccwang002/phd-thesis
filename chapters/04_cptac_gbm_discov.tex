@@ -11,8 +11,10 @@
     \label{fig:gbm-graphical-abstract}
 \end{figure}
 
+
 \section{Summary}
 Glioblastoma (GBM) is the most aggressive nervous system cancer. Understanding its molecular pathogenesis is crucial to improving diagnosis and treatment. Integrated analysis of genomic, proteomic, post-translational modification and metabolomic data on 99 treatment-naive GBMs provides insights to GBM biology. We identify key phosphorylation events (e.g., phosphorylated PTPN11 and PLCG1) as potential switches mediating oncogenic pathway activation, as well as potential targets for \gene{EGFR}-, \gene{TP53}-, and RB1-altered tumors. Immune subtypes with distinct immune cell types are discovered using bulk omics methodologies, validated by snRNA-seq, and correlated with specific expression and histone acetylation patterns. Histone H2B acetylation in classical-like and immune-low GBM is driven largely by BRDs, CREBBP, and EP300. Integrated metabolomic and proteomic data identify specific lipid distributions across subtypes and distinct global metabolic changes in \gene{IDH}-mutated tumors. This work highlights biological relationships that could contribute to stratification of GBM patients for more effective treatment.
+
 
 \section{Introduction}
 Glioblastoma (GBM) is the most common primary malignant brain tumor, with roughly 12,000 new cases annually in the United States and median survival under 2 years \cite{delgado-lopezpd_corrales-garciaem:SurvivalGlioblastoma2016,ostromqt_barnholtz-sloanjs:CBTRUSStatistical2019}. The Cancer Genome Atlas (TCGA) \cite{brennancw_chinl:GBM2013,tcga_network:GBM2008} and other studies \cite{yanh_bignerdd:IDH1IDH22009} have reshaped the World Health Organization classification of nervous system tumors \cite{louisdn_ellisondw:2016World2016} to include molecular features \cite{bratdj_wellerm:CIMPACTNOWUpdate2018, louisdn_vondeimlinga:AnnouncingCIMPACTNOW2017}.
@@ -62,8 +64,8 @@ All samples were homogenized and aliquoted for each of the ten different omics a
     \phantomlabel{fig:gbm-proteomic-qc-prot-id}
     \phantomlabel{fig:gbm-proteomic-qc-corr}
     \includegraphics[width=0.9\linewidth]{figures/chap04_cptac_gbm_discov/figures1_proteome_qc.pdf}
-    \caption[Integrated Proteomic Workflow and Quality Control.]{%
-        Integrated Proteomic Workflow and Quality Control.
+    \caption[Integrated proteomic workflow and quality control.]{%
+        Integrated proteomic workflow and quality control.
         \subref{fig:gbm-proteomic-qc-exp-design}
         TMT-11 based global proteome, phosphoproteome, and acetylome analysis workflow. The GBM tumors and GTEx normal tissues were analyzed in 11 TMT 11-plex experiments, each with 10 study samples and a common internal reference sample created by pooling all study samples (equal contribution). The TMT11-labeled samples were then fractionated, split (with 5\% peptide mass analyzed directly for global proteome), and subjected to tandem enrichment of phosphopeptides and acetylated peptides. Peptides were detected and quantified using information from the TMT-11 MS/MS spectra.
         \subref{fig:gbm-proteomic-qc-prot-id}
@@ -96,8 +98,8 @@ Based on the known functional effects of protein acetylation \cite{naritat_choud
     \phantomlabel{fig:gbm-subtype-each-data-type}
     \phantomlabel{fig:gbm-subtype-mgmt-survival}
     \includegraphics[width=0.95\linewidth]{figures/chap04_cptac_gbm_discov/figures2_subtypes.pdf}
-    \caption[Proteogenomic Characterization and Subtyping of GBM.]{%
-        Proteogenomic Characterization and Subtyping of GBM.
+    \caption[Proteogenomic characterization and subtyping of GBM.]{%
+        Proteogenomic characterization and subtyping of GBM.
         \legendcontdnote
     }
     \label{fig:gbm-subtype}
@@ -130,6 +132,82 @@ For example, 38 of 90 tumors (42\%) exhibited hypermethylation of the MGMT promo
 
 
 \subsection{Driver genetic alterations influence oncogenic protein abundance and phosphorylation}
+We associated genetic alterations (mutations, CNVs, fusions, and SVs) with RNA, protein expression and phosphorylation levels, observing 95 \textit{cis-trans} phosphorylation events (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}). We found strong \textit{cis} effects for \textit{EGFR} and \textit{PDGFRA}, with significant increases in RNA and protein expression and increased phosphorylation at S1166 and S1067/S1070, respectively. At the trans level, tumors with \gene{EGFR} alterations presented elevated CTNNB1 (β-catenin) protein despite decreased mRNA, and increased phosphorylation of both PTPN11 (Shp2) at Y62 and PLCG1 at Y783 (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}). These observations illustrate the importance of protein measurements to study pathway activation.
+
+\begin{figure}[tb]
+    \centering
+    \phantomlabel{fig:gbm-mut-impact-rna-protein}
+    \phantomlabel{fig:gbm-mut-impact-phospho}
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figure2_mut_impact.pdf}
+    \caption[\textit{Cis} and \textit{trans} effects of SMGs on RNA, protein, and phosphorylation abundance.]{%
+        \textit{Cis} and \textit{trans} effects of SMGs on protein and phosphorylation.
+        \subref{fig:gbm-mut-impact-rna-protein}
+        \textit{Cis} and \textit{trans} effects of significantly mutated genes (y axis) on RNA and protein level (x axis) showing that effects are often similar.
+        \subref{fig:gbm-mut-impact-phospho}
+        \textit{Cis} and \textit{trans} effects of significantly mutated genes (y axis) on protein phosphorylation status (x axis).
+    }
+    \label{fig:gbm-mut-impact}
+\end{figure}
+
+Tumor suppressors \gene{RB1}, \gene{NF1}, \gene{PTEN}, and \gene{ATRX} demonstrated good concordance between genetic alterations and decreased RNA, protein, and phosphorylation levels of their respective gene products. Although the general effect of \gene{TP53} mutations on increased protein stability is known, we identified specific phosphosites that correlate with increased stability. Phosphorylation of TP53 at S315 and TP53BP1 at S1099, S1106, and S1109 correlated with increased TP53 protein expression (Pearson r = 0.89 and 0.53, respectively) (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}).
+
+We assessed kinases known to phosphorylate TP53 and its downstream targets. In TP53 mutants (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}), we detected elevated protein and/or phosphorylation in ATR, MAPK3, CDK2, and CDK9, while MDM2 was decreased at both RNA and protein levels. Tumors with \gene{TP53} mutations showed upregulated phosphosites, but not increased protein levels, of DNA repair genes, suggesting specific phosphosite regulation. We observed negative feedback between RB1 and downstream targets, CDK2, CDK6, MCM2, MCM4, and MCM6, while NF1 had similar effects on IRF8 (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}). \gene{RB1}-altered samples (12\% of the cohort) showed significantly downregulated RB1 and upregulated MCM2, MCM4, and MCM6 protein expression. In addition, in samples with \gene{NF1} alterations, we observed upregulation of protein and RNA of IRF8, a transcription factor that controls microglial motility \cite{masudat_inouek:IRF8Transcriptional2014} (\fref{fig:gbm-mut-impact-rna-protein}, \ref{fig:gbm-mut-impact-phospho}).
+
+
+\subsection{RTK signaling cascades are activated in GBM}
+% TODO: simplify me
+Genomic loci associated with RTKs, such as EGFR, PDGFRA, and MET, are frequently amplified in GBM \cite{brennancw_chinl:GBM2013}. We identified 45 tumors with \gene{EGFR} SVs, all having copy number amplifications, suggesting high concordance between SV and CNV (\fref{fig:gbm-overview-mut-landscape}). All tumors with mutated \gene{EGFR} and SV have correspondingly high RNA, protein, and Y1172 phosphorylation levels, indicating EGFR pathway activation. We did not find expression differences between samples having a sole SV event versus those with dual mutation and SV events, suggesting EGFR upregulation in GBM is largely due to SV, as associated with CNV amplification, rather than mutationally driven, which is different from other tumor types, such as lung cancer \cite{tcga:LUAD2014}. We also found nine samples in which \gene{EGFR} SV co-occurred with \gene{PDGFRA} or \gene{FGFR3} SV, while 13 samples with either \gene{PDGFRA} or \gene{FGFR3} alteration did not show any alterations in \gene{EGFR}. For \gene{PDGFRA}, two out of three mutations overlap with SV events. Only one sample with mutation in \gene{PDGFRA} had high PDGFRA RNA and protein expression. For EGFR, n = 53 (WT), 29 (SV), and 16 (SV and MUT); for \gene{PDGFRA}, n = 84 (WT), 12 (SV), and 2 (SV and MUT).
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/chap04_cptac_gbm_discov/figure3_ptpn11.pdf}
+    \caption[Alterations in RTKs and associations with expression, phosphosite status, and downstream targets.]{%
+        Alterations in RTKs and associations with expression, phosphosite status, and downstream targets. The schematic shows dual regulation of PTPN11 by EGFR and PDGFRA and the downstream substrates that PTPN11 may dephosphorylate.
+    }
+    \label{fig:gbm-ptpn11}
+\end{figure}
+
+We also observed increased phosphorylation levels of PTPN11-Y62, PLCG1-Y783, RB1-S795Y805, MAP3K1-S1408, and specific EGFR sites in \gene{EGFR}-altered samples. Notably, the total protein level of PTPN11 was comparable between the two groups, suggesting its activity is regulated primarily by phosphorylation. A similar pattern is observed with PLCG1 (PLCγ1), where Y783 phosphorylation was significantly higher in \gene{EGFR}-altered versus \gene{EGFR}-WT samples (Wilcox false discovery rate [FDR] < 0.01; \fref{fig:gbm-rtk-ihc-plcg1-gab}), despite no significant difference in PLCγ1 protein expression (FDR = 0.11). Since phosphorylation of PLCG1 on Y783 is activating \cite{poulinb_rheesg:IntramolecularInteraction2005}, this could provide a mechanism for EGFR activation of PLCG1’s known effects on proliferation, migration, and invasiveness \cite{kunzek_brauningera:RecurrentActivating2014}.
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:gbm-rtk-ihc-alter-impact}
+    \phantomlabel{fig:gbm-rtk-ihc-fgfr3-fusion}
+    \phantomlabel{fig:gbm-rtk-ihc-plcg1-gab}
+    \phantomlabel{fig:gbm-rtk-ihc-ihc-sox9-gab1}
+    \phantomlabel{fig:gbm-rtk-ihc-ihc-im1-im4}
+    \phantomlabel{fig:gbm-rtk-ihc-ihc-all-ims}
+    \includegraphics[height=0.93\textheight]{figures/chap04_cptac_gbm_discov/figures4_validation.pdf}
+    \caption[RNA, protein and phosphosite level change in samples with different RTK alterations, and IHC validations.]{%
+        RNA, protein and phosphosite level change in samples with different RTK alterations, and IHC validations.
+        \legendcontdnote
+    }
+    \label{fig:gbm-rtk-ihc}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:gbm-rtk-ihc}
+        \subref{fig:gbm-rtk-ihc-alter-impact}
+        The comparison of CNV, RNA and protein expressions and phosphosite level between EGFR altered and WT samples (left panel) and PDGFRA altered and WT samples (right panel).
+        \subref{fig:gbm-rtk-ihc-fgfr3-fusion}
+        The comparison of RNA and protein expression of FGFR3 and TACC3 between samples with and without FGFR3-TACC3 fusion and the breakpoints found in FGFR3 from RNA-Seq data (n = 94 and 5, respectively). Five samples with FGFR3-TACC3 fusions with an intact FGFR3 kinase domain. Three samples which are protein expression outliers in FGFR3 are marked by larger circles.
+        \subref{fig:gbm-rtk-ihc-plcg1-gab}
+        The comparison of PLCG1, GAB1, and GRB2 protein expression and PLCG1-Y783 phosphosite level between EGFR altered (n = 46) and WT (n = 53) samples.
+        \subref{fig:gbm-rtk-ihc-ihc-sox9-gab1}
+        Immunohistochemistry staining for SOX9 and GAB1 expression in EGFR altered and WT tumors is concordant with the mass spectrometry findings. Positive IDH1 R132H staining of the ATRX WT and IDH1 mutant tumor. Scale bars: 100 μm.
+        \subref{fig:gbm-rtk-ihc-ihc-im1-im4}
+        Immunohistochemistry staining for CD68, CD163, CD3, PD-1, PD-L1 in tumors of different immune subtypes is concordant with the mass spectrometry and gene expression analyses. Scale bars: 100 μm.
+        \subref{fig:gbm-rtk-ihc-ihc-all-ims}
+        Immunohistochemistry staining for CD68 and CD3 in tumors of all four immune subtypes is concordant with the mass spectrometry and gene expression analyses. Scale bars: 100 μm.
+    }
+\end{figure}
+
+We performed a kinase-substrate study for EGFR and PDGFRA and identified high levels of GAB1 phosphorylation at Y689 and Y657, consistent with high EGFR expression. In addition, PTPN11 phosphosites at Y546 and Y584 were associated with high PDGFRA expression (\fref{fig:gbm-ptpn11}) and have been observed in lung cancers with ALK fusions \cite{voenac_chiarler:TyrosinePhosphatase2007}. Activation of PTPN11 through either EGFR- or PDGFRA-related phosphorylation in GBM suggests it may represent a shared RTK signaling hub. PTPN11, GAB1, and GRB2 form a complex and are co-regulated by RTKs to activate the RAS pathway \cite{montagnera_raynalp:NovelRole2005}. Figures \ref{fig:gbm-mut-impact-rna-protein} and \ref{fig:gbm-rtk-ihc-plcg1-gab} show that EGFR activation status is associated with upregulated GAB1 and downregulated GRB2 protein expression. We validated the elevated GAB1 expression in EGFR-altered tumors using IHC (\fref{fig:gbm-rtk-ihc-ihc-sox9-gab1}).
+
+
+\subsection{Distinct immune marker expression and epigenetic events characterize GBM immune subtypes}
+
 
 
 \section{Discussion}
