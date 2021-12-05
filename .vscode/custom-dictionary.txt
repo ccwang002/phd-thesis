@@ -1,6 +1,7 @@
 # Custom Dictionary Words
 acetylation
 acetylome
+ATAC
 CIMP
 CNV
 CPTAC
@@ -8,6 +9,7 @@ CREBBP
 cryopulverized
 CTNNB1
 EGFR
+epigenomics
 exome
 FFPE
 GISTIC
