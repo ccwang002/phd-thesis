@@ -35,10 +35,10 @@
 % Hyperlinks
 \usepackage{hyperref}
 \hypersetup{%
-    pdfauthor={Liang-Bo Wang},
-    pdfsubject={PhD Dissertation},
     colorlinks=true,
-    linkcolor=black, urlcolor=[rgb]{0.0855,0.3675,0.5470}, citecolor=black%
+    linkcolor=black,
+    urlcolor=[rgb]{0.0855,0.3675,0.5470},
+    citecolor=black%
 }
 % default URL style
 \urlstyle{same}
@@ -122,6 +122,14 @@
 \setthesisschool{Division of Biology and Biomedical Sciences}
 \setthesisdepartment{Computational Biology and Systems}
 
+% Configure PDF metadata
+\hypersetup{
+    pdftitle={%
+        Building toolbox and insights toward proteogenomic characterization of
+        glioblastoma at bulk and single cell level
+    },
+    pdfauthor={\thesisauthor},
+}
 
 % Custom hypenation
 \babelhyphenation{}
