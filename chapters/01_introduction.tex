@@ -7,6 +7,11 @@
 % Discussion: remaining challenges, the benefits in another fields than oncology
 
 % Cancer
+% mutation
+% PTM
+% heterogeneity
+% tumor microenvironment
+% precision medicine
 
 % Large scale patient samples collection (consoritum works)
 
@@ -22,3 +27,25 @@
 % GBM
 
 % Outline of the dissertation
+
+
+\section{Cancer and precision medicine}
+Cancer is the leading cause of death in most countries in the world \cite{sungh_brayf:GlobalCancer2021}. In the U.S., cancer is estimated to introduce roughly 1.9 millions cases and 600 thousands deaths in 2021, where \textasciitilde40\% of the population will be diagnosed with cancer at some point in their lifetime \cite{siegelrl_jemala:CancerStatistics2021}. Despite advancements in understanding and treating cancer in the past 50 years, many forms of the disease lack effective treatment, and how normal cells become cancereous, the process known as oncogenesis, remains to be fully deciphered. Therefore, the cancer research community continues to work on better characterization of cacner and its treatment as our ultimate goals.
+
+
+% TODO: bring in the functional impact of cancer
+
+\subsubsection{Oncogenesis and the role of somatic mutation}
+Oncogenesis is currently viewed as a microevolution process where normal cells acquire somatic mutations that offer growth and survival advantage under selection \cite{strattonmr_futrealpa:CancerGenome2009,martincorenai_campbellpj:SomaticMutation2015}. The somatic mutation rate in human is estimated to be about 2 to 10 mutations per cell division \cite{lynchm_lynchm:RateMolecular2010,milhollandb_vijgj:DifferencesGermline2017}. A tumor may accumulate 0.01--100 mutations per megabase in the genome depending on the cancer type \cite{lawrencems_getzg:MutationalHeterogeneity2013,martincorenai_campbellpj:SomaticMutation2015}. However, only some of the mutations might confer a growth and survival advantage while remaining mutations are either benign or of unknown phenotype.
+
+Due to the random nature of oncogenesis, each tumor is different in their mutational profile.
+
+% mention driver genes and tumor suppressor genes
+% \cite{dingl_mariamidzea:PerspectiveOncogenic2018}.
+
+% For example, transcription factor \gene{TP53} is a significantly mutated gene (SMG) in cancer and it responds to DNA damage by inducing cell cycle arrest \autocite{kastan_participation_1991}. Mutations in TP53 can lead to the uncontrolled proliferation of mutated cells, thereby causing cancer. A remarkable 37.5\% of the tumor samples examined across 33 Cancer Genome Atlas (TCGA) cancer types contain a \gene{TP53} mutation\autocite{bailey_comprehensive_2018}. Although other tumors do not possess such a mutation, they might exploit other genes in the same signalling pathway or other pathways to evade protection mechanisms. Such mutation heterogeneities are a particularly confounding aspect of cancer research and, to better understand these heterogeneities, it is crucial to understand the functional impact of the somatic mutations each tumor possesses.
+
+% Functional impact has been an area of intensive research, especially since the first cancer somatic mutation, \gene{HRAS} p.G12V, was identified in \citeyear{reddy_point_1982} \autocite{reddy_point_1982,tabin_mechanism_1982}. A number of statistical methods have been widely-used to infer functional elements, known as ``driver'' genes and mutations, including high gene mutation rate, mutation recurrence, mutual exclusivity, and co-occurrence of mutations across multiple samples or cancer types, since these phenomena imply positive selection \autocite{martincorena_somatic_2015}. Our lab has also studied the effect of coding mutations on protein structure \autocite{niu_protein-structure-guided_2016}. \citeauthor{niu_protein-structure-guided_2016} found that mutations cluster spatially in the functional protein domains of driver genes. For example, mutations clustering near an EGFR phosphotyrosine site in the 3D tertiary structure have been shown to increase autophosphorylation levels and EGFR activity \autocite{niu_protein-structure-guided_2016}.
+
+% Many somatic mutations have unknown significance; transition to PTM
+% However, the functional impact of most coding mutations in cancer remains unknown, with only a small fraction of suspected cancer-related mutations having actually been functionally validated, even for well-known oncogenes like \gene{PIK3CA} and \gene{BRCA1/2} \autocite{ng_systematic_2018}. Through a comprehensive pan-cancer analysis, our lab has previously identified a large number of genes that are recurrently mutated in various signaling pathways \autocite{bailey_comprehensive_2018}. Since post-translational modifications (PTMs) are known to be essential for signal transduction \autocite{hunter_signaling2000_2000}, I propose to explore the functional impacts of mutations by investigating their effects on PTMs.
