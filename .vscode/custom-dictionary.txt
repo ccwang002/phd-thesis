@@ -231,6 +231,7 @@ proteomic
 proteomics
 proto
 PTEN
+PTMcosmos
 PTPN
 PTPRC
 PUGN
