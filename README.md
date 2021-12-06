@@ -7,7 +7,8 @@ Use LuaLaTex on Tex Live 2020 and later. For the BasicTeX distribution on macOS,
         latexmk \
         biber biblatex biblatex-nature \
         lualatex-math \
-        csquotes threeparttable siunitx
+        csquotes threeparttable multirow \
+        siunitx
 
 Build the document by:
 
