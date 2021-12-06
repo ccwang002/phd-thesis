@@ -207,6 +207,72 @@ We performed a kinase-substrate study for EGFR and PDGFRA and identified high le
 
 
 \subsection{Distinct immune marker expression and epigenetic events characterize GBM immune subtypes}
+We generated cell-type immune enrichment scores using single-sample GSEA by xCell \cite{arand_butteaj:XCellDigitally2017}, finding four distinct immune-based GBM subtypes (\fref{fig:gbm-immune-deconv}). Immune subtype 1 (im1) showed overall higher scores (\fref{fig:gbm-immune-valid-tcga-score}), including elevated levels of microglia, macrophages, and lymphocytes. Immune subtypes 2 and 3 (im2 and im3) displayed reciprocal ratios of macrophages and lymphocytes, with im2 higher in macrophages and lower in lymphocytes and im3 having higher neuron score (\fref{fig:gbm-immune-deconv} and \ref{fig:gbm-immune-valid-tcga-score}). Immune subtype 4 (im4) is distinct from the others, with substantially lower enrichment for all immune cell types (\fref{fig:gbm-immune-deconv} and \ref{fig:gbm-immune-valid-tcga-score}). The mesenchymal subtype was enriched in im1 and im2 (Fisher test p = 1.65e-15), while IDH mutants were overrepresented in im3 (p = 1.02e-5). The DNA methylation dm3 subtype was strongly associated with im1 (Fisher test p = 1.26e-5), consistent with the association of dm3 with immune gene expression (\fref{fig:gbm-subtype-methyl}). The four immune subtypes were confirmed in the TCGA GBM cohort using transcriptome data (\fref{fig:gbm-immune-valid-tcga-score} and \ref{fig:gbm-immune-valid-tcga-cluster}) and protein deconvolution (\fref{fig:gbm-immune-deconv} and \ref{fig:gbm-immune-valid-protein-cibersort}).
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:gbm-immune-deconv}
+    \phantomlabel{fig:gbm-immune-histo-umap}
+    \phantomlabel{fig:gbm-immune-histo-example-im4}
+    \phantomlabel{fig:gbm-immune-histo-example-not-im4}
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figure4_immune.pdf}
+    \caption[Cell-type enrichment, immune marker expression, and enrichment pathways among the four immune subtypes.]{%
+        Cell-type enrichment, immune marker expression, and enrichment pathways among the four immune subtypes.
+        \legendcontdnote
+    }
+    \label{fig:gbm-immune}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:gbm-immune}
+        \subref{fig:gbm-immune-deconv}
+        The four immune subtypes identified by consensus clustering showing cell-type features, immune checkpoints, and potential immunotherapy targets. Differential expression is between tumors of one immune subtype versus the rest based on global protein and phosphoprotein abundance (DEPs/DEPPs: FDR <0.05 and log\textsubscript{2}FC > 0.8) and the corresponding enriched pathways (FDR <0.05 and log\textsubscript{2}FC ≥ 3 markers included in the pathway).
+        \subref{fig:gbm-immune-histo-umap}
+        Features captured by the deep learning model. Each dot represents a tile of H\&E slides in the test set, colored according to prediction score (red: predicted immune-high; blue: predicted immune-low). The 20,000 sampled tiles from 99 patients were clustered by t-SNE to their activation maps (a 1,250-long vector for each tile) from the final layer of the model.
+        \subref{fig:gbm-immune-histo-example-im4}
+        H\&E tile images from im4 tumors, with arrows indicating giant cells. The highlighted region contains multiple noncontinuous tiles clustered closely in t-SNE space.
+        \subref{fig:gbm-immune-histo-example-not-im4}
+        H\&E tile images from non-im4 tumors, with arrows indicating the inflammatory cells. The highlighted region contains multiple noncontinuous tiles clustered closely in t-SNE space.
+    }
+\end{figure}
+
+We performed snRNA-seq on 18 GBM samples using the same cryopulverized material from previous analyses (7 im1, 5 im2, 1 im3, 5 im4 samples; \fref{fig:gbm-immune-deconv}). TAMs comprised the major non-neoplastic cell population in the GBM TME (\fref{fig:gbm-single-cell-umap}). Im4 samples showed consistently low percentages of T cell and TAM infiltration (1.3\% and 6\% on average, respectively) compared with those of the other immune subtypes (7\% and 19\% on average, respectively). Im1 tumors showed higher scores for microglia and macrophages at the bulk level, but this was not observed in im1-3 in snRNA-seq (\fref{fig:gbm-immune-valid-sc-percentage}), which may be explained by the bulk data being driven by the percentage of TAMs and the expression of genes in the TAMs themselves. We validated key immune markers (CD3, CD68, CD163, PD-1, and PD-L1) in five tumors from three immune subtypes using IHC (\fref{fig:gbm-rtk-ihc-ihc-im1-im4} and \ref{fig:gbm-rtk-ihc-ihc-all-ims}).
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/chap04_cptac_gbm_discov/figure4_immune_single_cell.pdf}
+    \caption[Overview of the snRNA-seq cell type annotation.]{%
+        snRNA-seq UMAP plot colored by cell types observed in 18 discovery cohort GBM samples. OPC, oligodendrocyte progenitor cells; TAM, tumor-associated microglia/macrophage; vSMC, vascular smooth muscle cell.
+    }
+    \label{fig:gbm-single-cell-umap}
+\end{figure}
+
+We identified differentially expressed proteins (DEPs) and phosphoproteins (DEPPs) in known immune targets \cite{chenz_hambardzumyand:ImmuneMicroenvironment2018}. Gene and protein expression levels of immune targets, including negative regulatory immune checkpoints (e.g., PD-1 and TIM-3), chemokines (e.g., CCL2), macrophage-specific cytokines (e.g., CSF-1), and their receptors (CSF-1R), were significantly higher in im1 (\fref{fig:gbm-immune-deconv}) \cite{butowskin_pradosm:OrallyAdministered2016}. We also identified overrepresented pathways among DEPs and DEPPs. Pathways in im1, including immune system and microglia pathogen phagocytosis, were mostly immune-related, whereas collagen formation and angiogenesis-related proteins were upregulated in im2, neuronal system pathways in im3, and cell cycle and gliogenesis pathways in im4 (\fref{fig:gbm-immune-deconv}).
+
+We analyzed morphologic differences between immune subtypes by applying a deep learning model using sampled tumor tiles from H\&E-stained sections. Dimensional reduction (t-SNE) of im4 compared with other clusters (im1-3) (\fref{fig:gbm-immune-histo-umap}, \ref{fig:gbm-immune-histo-example-im4}, \ref{fig:gbm-immune-histo-example-not-im4}) revealed a substantial number of large cells, some of which are giant cells, in im4 tiles, with few in im1-3 tiles. Biological relevance of these cells is unclear. Inflammatory cell fractions were noted in \textasciitilde20\% of im1-3 tiles compared to 5\% in im4 tiles.
+
+\begin{figure}[tbp]
+    \centering
+    \phantomlabel{fig:gbm-immune-valid-tcga-score}
+    \phantomlabel{fig:gbm-immune-valid-tcga-cluster}
+    \phantomlabel{fig:gbm-immune-valid-protein-cibersort}
+    \phantomlabel{fig:gbm-immune-valid-sc-percentage}
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figures5_immune.pdf}
+    \caption[Distinct Immune Marker Expression Ascertains Immune Subtypes.]{%
+        Distinct Immune Marker Expression Ascertains Immune Subtypes.
+        \subref{fig:gbm-immune-valid-tcga-score}
+        The distributions of xCell cell type enrichments, immune scores, and stroma scores among the 4 immune subtypes in the CPTAC GBM cohort and TCGA GBM cohort. For CPTAC, n = 30 (im1), 28 (im2), 9 (im3), and 32 (im4); for TCGA, n = 32 (im1), 48 (im2), 35 (im3), and 59 (im4).
+        \subref{fig:gbm-immune-valid-tcga-cluster}
+        The 4 immune subtypes identified by the consensus clustering on the cell type enrichment in the TCGA GBM study.
+        \subref{fig:gbm-immune-valid-protein-cibersort}
+        The distributions of protein-based CIBERSORT cell type enrichments among the 4 immune sub- types in the CPTAC GBM cohort. n = 30 (im1), 28 (im2), 9 (im3), and 32 (im4).
+        \subref{fig:gbm-immune-valid-sc-percentage}
+        snRNA-seq cell type percentage per sample in each immune subtypes.
+    }
+    \label{fig:gbm-immune-valid}
+\end{figure}
+
 
 
 

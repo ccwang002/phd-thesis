@@ -106,6 +106,7 @@ GABRG
 GATK
 GISTIC
 glioblastoma
+gliogenesis
 gnom
 GSEA
 gsva
@@ -185,6 +186,7 @@ nperm
 NTSR
 OCLR
 Octadecyl
+oligodendrocyte
 Oligodendrocytes
 omic
 omics
@@ -278,6 +280,7 @@ Tris
 UCSC
 UCSF
 ultrasonicator
+UMAP
 uncharacterized
 unconfounded
 UPLC
