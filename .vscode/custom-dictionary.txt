@@ -32,6 +32,7 @@ CARNS
 catenin
 CAVATICA
 CBTTC
+CEBPB
 CIBERSOR
 CIBERSORT
 CIMP
@@ -116,6 +117,7 @@ GZMB
 GZMH
 GZMK
 haplotype
+HDAC
 HDACs
 hematopoietic
 HEPES
@@ -125,6 +127,7 @@ Histopathologically
 Hochberg
 HPLC
 hypermethylation
+ICAM
 idat
 idats
 IFITM
@@ -201,6 +204,7 @@ Pedc
 peroxisomal
 pgdac
 phosphatases
+phosphatidylinositol
 phospho
 phosphopeptide
 phosphopeptides
@@ -226,6 +230,7 @@ proteomes
 proteomic
 proteomics
 proto
+PTEN
 PTPN
 PTPRC
 PUGN
@@ -277,6 +282,7 @@ trimethylchlorosilane
 trimethylsilyl
 trimethylsilylated
 Tris
+trisphosphate
 UCSC
 UCSF
 ultrasonicator
