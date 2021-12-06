@@ -274,6 +274,13 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
 \end{figure}
 
 
+\subsection{Mesenchymal tumor and microenvironment characteristics}
+Application of CausalPath \cite{baburo_demire:CausalInteractions2018} to the protein and phosphoprotein expression data (\fref{fig:gbm-pathway-supp-mes}) showed upregulation of the hypoxia pathway in mesenchymal tumors, evidenced by significant activation of multiple HIF-1 downstream targets (network permutation p = 0.0012). Increased angiogenesis was also evident in mesenchymal tumors, as demonstrated by upregulation of FLT1, MMP14, ENG, and SERPINE1. We observed complex regulation of macrophage activation and polarization through the upregulation of STAT3, ICAM1, SPI1, and CEBPB. In addition, the M1 polarization marker ARG1 showed increased expression \cite{arlauckassp_weisslederr:Arg1Expression2018}, along with SERPINE1 and HCK proteins, which promote M2 polarization \cite{kubalamh_declerckya:PlasminogenActivator2018}. The elevated inflammatory response in mesenchymal tumors may result in downstream activation of either hypoxia or macrophage polarization through multiple mediators, including LANE, IL18, and CD40 (\fref{fig:gbm-pathway-supp-mes}).
+
+
+\subsection{Differential acetylation of histone proteins is associated with specific subtypes and pathways}
+Histone acetylation regulates gene expression but is frequently aberrant in cancer \cite{eberhartera_beckerpb:HistoneAcetylation2002}. We detected more than 30 acetylation sites on histones H1, H2A, H2B, H3.3, and H4. Unsupervised clustering of these sites across all samples identified subsets of tumors with differentially acetylated histones H1, H2B, H3.3, and H4 (\fref{fig:gbm-histone-acetyl}). Histone acetylation was generally upregulated in tumors compared to normal samples, with a subset of tumors having elevated H1, H3, and H4 acetylation, while a different cluster exhibited significantly increased acetylation of H2B N-terminal sites (\fref{fig:gbm-histone-acetyl}).
+
 \begin{figure}[tb]
     \centering
     \includegraphics[width=0.75\linewidth]{figures/chap04_cptac_gbm_discov/figure5_histone_acetyl.pdf}
@@ -285,6 +292,9 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
 \end{figure}
 
 
+\subsection{Key oncogenic pathways and therapeutic opportunities in GBM}
+We integrated genetic alterations and the RNA, protein, and phosphosite levels per expression subtype to examine three important oncogenic signaling pathways in GBM: RTK/RAS, PI3K/AKT, and p53/cell cycle (\fref{fig:gbm-pathway-summary}). We found that expression outlier percentage was much higher than genetic alteration rate in RTK pathways. Moreover, analyzed tumors harbored at least one genetic alteration or outlier expression in at least one of the three pathways.
+
 \begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figure7a_pathway_summary.pdf}
@@ -294,6 +304,10 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
     \label{fig:gbm-pathway-summary}
 \end{figure}
 
+In the RTK/RAS pathway, classical tumors predominantly showed amplified \gene{EGFR}, while proneural and \gene{IDH}-mutant tumors showed amplified \gene{PDGFRA}, both resulting in higher RNA, protein, and phosphosite abundances of EGFR and PDGFRA, respectively, illustrating convergence at the functional level. For mesenchymal tumors, we observed upregulated MET and downregulated NF1 protein abundance.
+
+In the PI3K pathway, proneural, mesenchymal, and classical tumors showed lower expression of PTEN due to mutations and deletions, which potentially activate AKT1 and AKT2 through phosphatidylinositol (3,4,5)-trisphosphate (PIP\textsubscript{3}). In contrast, AKT3 expression was higher in IDH-mutant and proneural tumors, explained by active expression of \gene{AKT3} in adult brains \cite{eastonrm_birnbaummj:RoleAkt32005}. In the p53/cell cycle pathway, we observed subtype-specific amplification and increased expression of \gene{MDM2} in mesenchymal and MDM4 in proneural and classical tumors. We also observed differences between \gene{IDH} WT and mutant tumors in \gene{CDKN2A/B}.
+
 \begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figures7_pathway_druggability.pdf}
@@ -302,6 +316,8 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
     }
     \label{fig:gbm-druggability}
 \end{figure}
+
+Using the Library of Integrated Network-Based Cellular Signatures (LINCS) \cite{keenanab_pillaia:LibraryIntegrated2018,stathiasv_schurersc:LINCSData2019}, we calculated the similarity between alteration-specific RNA or phosphoprotein signatures from our study with corresponding transcriptional (L1000 assay) \cite{subramaniana_golubtr:NextGeneration2017} and phosphoproteomic LINCS signatures (P100 assay) \cite{litichevskiyl_jaffejd:LibraryPhosphoproteomic2018} to identify compounds predicted to reverse tumor signatures of the cohort. Phosphoproteomic data yielded more robust results than the transcriptional-response data. For example, while RNA signatures suggested that HDAC inhibitors might reverse the EGFR signature, phosphoproteomic data indicated kinase inhibitors, beyond the expected EGFR inhibitors, to be more highly connected with potential inhibitory effects (\fref{fig:gbm-druggability}). In contrast, NF1-altered samples exhibited concordance between the transcriptional and phosphoproteomic perturbation-response analyses: both suggested MAPK inhibitors as top signature-reversing candidates (\fref{fig:gbm-druggability}). RB1 alteration and immune subtypes agreed variously when comparing perturbations predicted to reverse the gene-altered cell states using transcriptomics versus phosphoproteomics readouts \fref{fig:gbm-pathway-supp-rb1-druggability}).
 
 \begin{figure}[p]
     \centering
@@ -328,6 +344,13 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
 
 
 \section{Discussion}
+GBM was one of the earliest subjects of deep genomic and transcriptomic analysis \cite{brennancw_chinl:GBM2013} and targeted MS studies \cite{gux_liz:ProteomeAcetylome2017,heh_emmettmr:MethodLipidomic2007}. However, most patients are still treated with a standard of care developed almost two decades ago \cite{stuppr_mirimanoffro:RadiotherapyConcomitant2005}, underscoring the need for deeper insights. Here, we extended classical sequencing approaches with comprehensive integration of MS-based proteome, phosphoproteome, acetylome, metabolome, and lipidome analyses and single-cell transcriptomics. Multi-omics analysis identified a subset of patients with mixed subtypes compared with traditional sequencing-based subtypes, who exhibit shortened overall survival. Phosphoproteomic data indicate that PLCG1 and PTPN11 act as a common signaling hub for multiple RTKs.
+
+RNA and protein expression data from bulk tumors indicate that GBM subtypes differ in infiltrating macrophages and the distribution of specific immune cell types. In particular, we discovered an unexpected immune subtype im3 exhibiting a relative depletion of the macrophage-microglia immunosuppressive infiltration typical of GBM, but which contains significant enrichment of T lymphocytes and natural killer (NK) cells. It is also enriched for IDH-mutated tumors. We validated these findings using IHC and an independent patient cohort. Interestingly, im1 TAMs demonstrated upregulation of M2 polarization markers, such as CD163 and MRC1, suggesting a role in tumor promotion \cite{pintoml_oliveiramj:TwoFaces2019}.
+
+The mesenchymal subtype has high bulk-level RNA expression of EMT signatures \cite{behnanj_hannag:LandscapeMesenchymal2019}, but it was not known if this was due to the tumor cells themselves or the high number of infiltrating immune cells. Our data indicate that tumor cells in the mesenchymal subtype display an enhanced EMT signature, along with an increase in the relative proportion of immune cells in the tumor stroma. Cell-type-specific gene expression indicates that both the tumor cells and the stromal components contribute to the overall mesenchymal signatures. This study reveals an association between H2B acetylation and patterns of protein expression associated with immune cell functions in GBM. Furthermore, comparison of the lipid and metabolic signatures in GBM subtypes and normal brain tissues reveals shared characteristics that may be associated with neuronal phenotypes and IDH status. Similarly, from a metabolomic view, mesenchymal-like GBMs differ substantially from other subtypes and have specific metabolic vulnerabilities not present in other GBMs.
+
+The multidimensional analysis of patient specimens described in this investigation adds context to prior genomic and transcription-based investigations of GBM and suggests avenues for further mechanistic studies. Rapid advancement of single-cell genomics and proteomics technologies will facilitate deeper analyses of GBM heterogeneity and TME interactions. We hope these advances will improve patient stratification for clinical trials and lead, ultimately, to personalized treatments.
 
 
 
