@@ -1,2 +1,38 @@
 \chapter{PTMcosmos}
 \label{chap:ptmcosmos}
+
+\begin{table}[tbp]
+    \centering
+    \caption{CPTAC peptide search databases used by different disease working group.}
+    \label{tab:ptmcosmos-peptide-db}
+    \begin{threeparttable}[b]
+    \begin{tabular}{@{}llll@{}}
+    \toprule
+    Phase & Cohort & Database & Notes \\
+    \midrule
+    \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}CPTAC2/TCGA\\ retrospective\end{tabular}}
+        & BRCA  & RefSeq 20130727   & Broad Institute \\
+        & OV    & RefSeq 20111201   & PNNL \\
+    \midrule
+    \multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}CPTAC2\\ prospective\end{tabular}}
+        & OV    & CDAP (Refseq 2016)    & PNNL \\
+        & CRC   & RefSeq 20171003\tnote{*}  & Use RefSeq 2018 instead \\
+        & BRCA  & CDAP (Refseq 2016)    & Broad Institute \\
+    \midrule
+    \multirow{8}{*}{\begin{tabular}[c]{@{}l@{}}CPTAC3\\ discovery\end{tabular}}
+        & CCRCC & CDAP (Refseq 2018) & UMich \\
+        & GBM   & CDAP (Refseq 2018) & PNNL \\
+        & HNSCC & CDAP (Refseq 2018) & UMich \\
+        & LUAD  & CDAP (Refseq 2018)\tnote{\textdagger} & Broad Institute \\
+        & LSCC  & CDAP (Refseq 2018)\tnote{\textdagger} & Broad Institute \\
+        & PBTA  & CDAP (Refseq 2018) & MS3 spectra \\
+        & PDAC  & CDAP (Refseq 2018) & UMich \\
+        & UCEC  & CDAP (Refseq 2018) & PNNL \\
+    \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+    \item [*] Database uses hg38 genome reference.
+    \item [\textdagger] Database includes smORFs.
+    \end{tablenotes}
+    \end{threeparttable}
+\end{table}
