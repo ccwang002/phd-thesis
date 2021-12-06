@@ -237,7 +237,7 @@ We generated cell-type immune enrichment scores using single-sample GSEA by xCel
     }
 \end{figure}
 
-We performed snRNA-seq on 18 GBM samples using the same cryopulverized material from previous analyses (7 im1, 5 im2, 1 im3, 5 im4 samples; \fref{fig:gbm-immune-deconv}). TAMs comprised the major non-neoplastic cell population in the GBM TME (\fref{fig:gbm-single-cell-umap}). Im4 samples showed consistently low percentages of T cell and TAM infiltration (1.3\% and 6\% on average, respectively) compared with those of the other immune subtypes (7\% and 19\% on average, respectively). Im1 tumors showed higher scores for microglia and macrophages at the bulk level, but this was not observed in im1-3 in snRNA-seq (\fref{fig:gbm-immune-valid-sc-percentage}), which may be explained by the bulk data being driven by the percentage of TAMs and the expression of genes in the TAMs themselves. We validated key immune markers (CD3, CD68, CD163, PD-1, and PD-L1) in five tumors from three immune subtypes using IHC (\fref{fig:gbm-rtk-ihc-ihc-im1-im4} and \ref{fig:gbm-rtk-ihc-ihc-all-ims}).
+We performed snRNA-seq on 18 GBM samples using the same cryopulverized material from previous analyses (7 im1, 5 im2, 1 im3, 5 im4 samples; \fref{fig:gbm-immune-deconv}). TAMs comprised the major non-neoplastic cell population in the GBM TME (\fref{fig:gbm-single-cell-umap}). Im4 samples showed consistently low percentages of T cell and TAM infiltration (1.3\% and 6\% on average, respectively) compared with those of the other immune subtypes (7\% and 19\% on average, respectively). Im1 tumors showed higher scores for microglia and macrophages at the bulk level, but this was not observed in im1--3 in snRNA-seq (\fref{fig:gbm-immune-valid-sc-percentage}), which may be explained by the bulk data being driven by the percentage of TAMs and the expression of genes in the TAMs themselves. We validated key immune markers (CD3, CD68, CD163, PD-1, and PD-L1) in five tumors from three immune subtypes using IHC (\fref{fig:gbm-rtk-ihc-ihc-im1-im4} and \ref{fig:gbm-rtk-ihc-ihc-all-ims}).
 
 \begin{figure}[tb]
     \centering
@@ -250,7 +250,7 @@ We performed snRNA-seq on 18 GBM samples using the same cryopulverized material 
 
 We identified differentially expressed proteins (DEPs) and phosphoproteins (DEPPs) in known immune targets \cite{chenz_hambardzumyand:ImmuneMicroenvironment2018}. Gene and protein expression levels of immune targets, including negative regulatory immune checkpoints (e.g., PD-1 and TIM-3), chemokines (e.g., CCL2), macrophage-specific cytokines (e.g., CSF-1), and their receptors (CSF-1R), were significantly higher in im1 (\fref{fig:gbm-immune-deconv}) \cite{butowskin_pradosm:OrallyAdministered2016}. We also identified overrepresented pathways among DEPs and DEPPs. Pathways in im1, including immune system and microglia pathogen phagocytosis, were mostly immune-related, whereas collagen formation and angiogenesis-related proteins were upregulated in im2, neuronal system pathways in im3, and cell cycle and gliogenesis pathways in im4 (\fref{fig:gbm-immune-deconv}).
 
-We analyzed morphologic differences between immune subtypes by applying a deep learning model using sampled tumor tiles from H\&E-stained sections. Dimensional reduction (t-SNE) of im4 compared with other clusters (im1-3) (\fref{fig:gbm-immune-histo-umap}, \ref{fig:gbm-immune-histo-example-im4}, \ref{fig:gbm-immune-histo-example-not-im4}) revealed a substantial number of large cells, some of which are giant cells, in im4 tiles, with few in im1-3 tiles. Biological relevance of these cells is unclear. Inflammatory cell fractions were noted in \textasciitilde20\% of im1-3 tiles compared to 5\% in im4 tiles.
+We analyzed morphologic differences between immune subtypes by applying a deep learning model using sampled tumor tiles from H\&E-stained sections. Dimensional reduction (t-SNE) of im4 compared with other clusters (im1--3) (\fref{fig:gbm-immune-histo-umap}, \ref{fig:gbm-immune-histo-example-im4}, \ref{fig:gbm-immune-histo-example-not-im4}) revealed a substantial number of large cells, some of which are giant cells, in im4 tiles, with few in im1--3 tiles. Biological relevance of these cells is unclear. Inflammatory cell fractions were noted in \textasciitilde20\% of im1--3 tiles compared to 5\% in im4 tiles.
 
 \begin{figure}[tbp]
     \centering
@@ -273,6 +273,57 @@ We analyzed morphologic differences between immune subtypes by applying a deep l
     \label{fig:gbm-immune-valid}
 \end{figure}
 
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figures/chap04_cptac_gbm_discov/figure5_histone_acetyl.pdf}
+    \caption[Histone acetylation associations with immune subtypes and pathways.]{%
+        Histone acetylation associations with immune subtypes and pathways.
+        Unsupervised clustering of histone protein and site-level acetylation reveals distinct clusters of tumors enriched for acetylation of histones H2B, H3, and H4.
+    }
+    \label{fig:gbm-histone-acetyl}
+\end{figure}
+
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figure7a_pathway_summary.pdf}
+    \caption[Summary of pathway alterations.]{%
+        Three oncogenic pathways frequently altered in GBM. Each gene is annotated with mutational and CNV frequency, RNA, protein, and phosphoprotein abundance, by multi-omics subtype. Horizontal bar below gene box indicates frequency of alteration across all tumors. Also indicated are the proportion of tumors with genetic alterations (first percentage) and protein and phosphoprotein outlier expression (second percentage) for each pathway.
+    }
+    \label{fig:gbm-pathway-summary}
+\end{figure}
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figures7_pathway_druggability.pdf}
+    \caption[Summary of potential therapeutic targets.]{%
+        Summary of potential therapeutic targets. Drug connectivity analysis using alteration-specific transcriptional (CLUE and iLINCS) and phosphoproteomic (P100) signatures (altered tumors versus WT tumors). Twenty compounds that most strongly reverse or enhance the signature are highlighted along with their known mechanisms of action.
+    }
+    \label{fig:gbm-druggability}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:gbm-pathway-supp-mes}
+    \phantomlabel{fig:gbm-pathway-supp-rb1-druggability}
+    \includegraphics[width=\linewidth]{figures/chap04_cptac_gbm_discov/figures7_pathway_druggability.pdf}
+    \caption[Summary of Pathway Alterations of Mesenchymal Tumors Compared to the Other Tumors.]{%
+    Summary of Pathway Alterations of Mesenchymal Tumors Compared to the Other Tumors.
+        \legendcontdnote
+    }
+    \label{fig:gbm-pathway-supp}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:gbm-pathway-supp}
+        \subref{fig:gbm-pathway-supp-mes}
+        Causal explanations for differentially expressed proteomic and phosphoproteomic profiles in mesenchymal tumors versus the rest of the tumors using CausalPath. We highlighted the immune and hypoxia-related interactions enriched in the graph. Genes controlling the immune response might be a potential therapeutic target.
+        \subref{fig:gbm-pathway-supp-rb1-druggability}
+        Drug connectivity analysis using alteration-specific transcriptional (CLUE and iLINCS) and phosphoproteomic (P100) signatures of RB1 altered versus WT tumors and immune-high (im1, im2, and im3) versus immune-low (im4) tumors.
+    }
+\end{figure}
 
 
 
