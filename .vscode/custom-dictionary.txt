@@ -125,6 +125,7 @@ HDAC
 HDACs
 hematopoietic
 HEPES
+HGNC
 HHATL
 Hiseq
 Histopathologically

@@ -39,7 +39,6 @@ Here we present PTMcosmos, a comprehensive database for the collection, annotati
 \subsection{Data collection and harmonization}
 We developed PTMcosmos, a web portal to provide a comprehensive resource to the proteogenomics community to study cancer \fref{fig:ptmcosmos-workflow}. Total 432,021 PTM sites were collected from two databases, UniProt Knowledge Base and PhosphoSitePlus, and two experimental proteomic consortia across 13 studies and 11 cancer types, CPTAC and ICPC \fref{fig:ptmcosmos-stats-cptac-by-cancer}. To study the mutational impact on PTMs, we also collected the somatic mutations from the matching CPTAC tumor samples and a pan-cancer collection from TCGA MC3 project \cite{ellrottk_tcga:MC3MutationCalling2018}. Additional protein annotations were loaded to bridge the proteins with their known biological functions, including the non redundant protein sequence archive from UniPar \cite{leinonenr_apweilerr:UniProtArchive2004}, standardized gene symbol, aliases and identifiers from HUGO Gene Nomenclature Committee (HGNC) \cite{brufordea_tweedies:GuidelinesHuman2020}, protein structures from Protein Data Bank (PDB) \cite{bermanhm_bournepe:ProteinData2000}, protein domains from InterPro \cite{blumm_finnrd:InterProProtein2021} and Pfam \cite{mistryj_batemana:PfamProtein2021}, and protein pathways and complexes from OmniPath \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016}.
 
-
 \begin{figure}[tb]
     \centering
     \includegraphics[width=0.9\linewidth]{figures/chap03_ptmcosmos/figure1_ptmcosmos_workflow.pdf}
@@ -85,6 +84,8 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
 \end{figure}
 
 
+\subsection{Descriptive analysis of PTM sites in PTMcosmos}
+We analyzed the PTM sites in PTMcosmos to understand the pathways and domains present in the database. All 50 cancer hallmark pathways were represented in PTMcosmos, with phosphorylation being the dominant PTM for each pathway (\fref{fig:ptmcosmos-site-detail-pathway-domain}). The mitotic spindle, G2/M checkpoint and E2F pathways displayed the largest number of PTM sites, while pancreas beta cells, Notch signaling and angiogenesis showed the lowest number of PTM sites. To understand these results in greater detail, we investigated the genes and domains represented among PTM sites in the top three pathways. Consistent with their presence in cytoskeletal proteins, spectrin and filamin repeats had the highest number of PTMs (n = 655; 639) in the mitotic spindle pathway, with phosphorylation being the dominant PTM among these domains (n = 283; 390). The RecF/RecN/SMC N terminal domain, found in structural maintenance of chromosomes (SMC) proteins, was highly abundant in both the G2/M checkpoint (n = 342) and E2F target pathways (n =4 68), with ubiquitination being the dominant modification in this domain (n = 165; 194). The protein kinase domain, modified predominantly by ubiquitination and phosphorylation, was the most represented domain among G2/M checkpoint pathway members (151 phospho- and 141 ubiquitylsites out of 343 PTM sites).
 
 \begin{figure}[tbp]
     \centering
@@ -95,7 +96,7 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
     \caption[Descriptive analysis of the PTM sites in PTMcosmos.]{%
         Descriptive analysis of the PTM sites in PTMcosmos.
         \subref{fig:ptmcosmos-site-detail-venn}
-        Venn diagram showing unique DB/CPTAC sites.
+        Venn diagram showing unique CPTAC and database sites. Database sites are only found in alternative evidence sources (PhosphoSitePlus and UniProtKB).
         \subref{fig:ptmcosmos-site-detail-pathway-domain}
         The top Hallmark pathways and PFAM domains (Y axis) represented among all PTM sites in PTMcosmos. For each pathway or domain, the number of PTM sites (X axis) is normalized by the total protein sequence length of entries in the given pathway or domain.
         \subref{fig:ptmcosmos-site-detail-phspho-tyr}
@@ -103,6 +104,17 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
     }
     \label{fig:ptmcosmos-site-detail}
 \end{figure}
+
+Next, we investigated the PTM sites detected only in CPTAC and those found only in alternative evidence sources (PhosphoSitePlus and UniProtKB). In total, 93,319 PTM sites were unique to CPTAC experiments (hereafter called unique CPTAC sites), while 258,935 sites were detected in PhosphoSitePlus or UniProtKB, but not CPTAC (hereafter called unique database sites) (\fref{fig:ptmcosmos-site-detail-venn}).
+Among all the Pfam protein domains tested (n=2,501),  248 domains were significantly enriched among the unique database sites, including ``zinc finger, C2H2 type'' (FDR = 3.84e-147), ``cadherin domain'' (FDR = 3.08e-127), ``core histone H2A/H2B/H3/H4'' (FDR = 7.13e-90), ``immunoglobulin V-set domain'' (FDR = 2.53e-56) and “protein kinase domain” (FDR = 2.33e-53).
+Four hallmark pathways were significantly enriched among the unique database sites: ``HALLMARK\_INFLAMMATORY\_RESPONSE'' (FDR = 3.10e-32), ``HALLMARK\_SPERMATOGENESIS'' (FDR = 3.94e-31), ``HALLMARK\_IL6\_JAK\_STAT3\_SIGNALING'' (FDR = 3.01e-10) and ``HALLMARK\_NOTCH\_SIGNALING'' (FDR = 9.83e-05).
+Similarly, 75 protein domains were significantly enriched among unique CPTAC sites, with the five most significantly enriched domains being ``spectrin repeat'' (FDR = 1.15e-73), ``lipocalin/cytosolic fatty-acid binding protein family'' (FDR = 7.33e-35), ``serpin (serine protease inhibitor)'' (FDR = 3.04e-23), ``apolipoprotein A1/A4/E domain'' (FDR = 3.31e-20) and ``transferrin'' (FDR = 1.72e-18).
+Seven hallmark pathways were significantly enriched among unique CPTAC sites, with the top five pathways being ``HALLMARK\_COAGULATION'' (FDR = 1.05e-83), ``HALLMARK\_EPITHELIAL\_MESENCHYMAL\_TRANSITION'' (FDR = 1.75e-62), ``HALLMARK\_KRAS\_SIGNALING\_DN'' (FDR = 8.38e-29), ``HALLMARK\_COMPLEMENT'' (FDR = 4.55e-19) and ``HALLMARK\_ANGIOGENESIS'' (FDR = 3.28e-13).
+Interestingly, among serine, threonine and tyrosine phosphosites, unique database phosphosites were enriched for phosphotyrosine compared to all CPTAC sites (OR = 0.17, p < 2.2e-16) (\fref{fig:ptmcosmos-site-detail-phspho-tyr}), suggesting a potential limitation of mass spectrometry technology in detecting phosphotyrosine.
+
+
+\subsection{PTMcosmos user interface}
+To facilitate a friendly user interface, we made all the information searchable on PTMcosmos in a similar design as UniProt (\fref{fig:ptmcosmos-usage-demo}). Users are able to query the gene and protein name of interest and the PTM information is organized on a protein basis. The page contains a protein feature viewer to show the location of PTM sites and protein domain along its sequence. For each PTM site, its supporting evidence is grouped into dropdown menus based on the evidence source and type. Details of each evidence exhibit is available in the dropdown menu, including the publication information, sequence similarity source, and the experiment cohorts detecting the site. For PTM sites with experiment datasets loaded in PTMcosmos, an additional interactive page is available for users to explore the PTM abundance in the dataset. For proteins with mutation and PTM spatial clusters reported by HotPTM, an interactive viewer is available for users to explore the protein structure annotated with the PTM-mutation clusters.
 
 \begin{figure}[tb]
     \centering
@@ -114,6 +126,7 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
 \end{figure}
 
 
+\subsection{Differential expressed PTM sites between tumor and normal samples across cancer types}
 \begin{figure}[p]
     \centering
     \phantomlabel{fig:ptmcosmos-de-overview}
@@ -203,7 +216,8 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
 
 \section{Methods}
 
-\subsection{CPTAC proteomic data processing}
+\subsection{Data sources}
+\subsubsection{CPTAC proteomic data processing}
 
 \tref{tab:ptmcosmos-peptide-db} \url{https://github.com/ccwang002/cptac_proteome_preprocess}
 
@@ -245,7 +259,7 @@ By combining all the data sources and annotations. a total of 3.1 millions exhib
 \end{table}
 
 
-\subsubsection{Harmonize Coordinate}
+\subsubsection{PTM coordinate harmonization and protein sequence alignment}
 Only considered the canonical reviewed UniProt entries 
 If the identical protein sequence can be found, mapped to them directly
 Otherwise, perform global protein sequence alignment
@@ -253,3 +267,4 @@ To the UniProt entry of the same gene
 Create coordinate segments of consecutive matches (don't allow any amino acid mismatch)
 Only mapped the site when a full peptide (plus the 1 additional flanking aa) is in the coordinate segment
 
+\subsection{Database and website development}
