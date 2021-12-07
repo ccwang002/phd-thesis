@@ -16,7 +16,7 @@
 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/chap03_ptmcosmos/fig1_ptmcosmos_workflow.pdf}
+    \includegraphics[width=0.9\linewidth]{figures/chap03_ptmcosmos/figure1_ptmcosmos_workflow.pdf}
     \caption[PTMcosmos overview.]{PTMcosmos overview.}
     \label{fig:ptmcosmos-workflow}
 \end{figure}
@@ -26,7 +26,7 @@
     \phantomlabel{fig:ptmcosmos-stats-by-cancer}
     \phantomlabel{fig:ptmcosmos-stats-publications-per-ptm}
     \phantomlabel{fig:ptmcosmos-stats-publications-per-year}
-    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/fig1_ptmcosmos_stats.pdf}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure1_ptmcosmos_stats.pdf}
     \caption[Supporting details of the mutation comparison.]{%
         Supporting details of the mutation comparison.
         \subref{fig:ptmcosmos-stats-by-cancer}
@@ -43,7 +43,7 @@
     \phantomlabel{fig:ptmcosmos-map-stats-acetyl}
     \phantomlabel{fig:ptmcosmos-map-stats-ubiquityl}
     \phantomlabel{fig:ptmcosmos-map-stats-phospho}
-    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figs1_mapping_stats.pdf}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figures1_mapping_stats.pdf}
     \caption[Supporting details of the peptide re-annotation and coordinate mapping.]{%
         Supporting details of the peptide re-annotation and coordinate mapping.
         \subref{fig:ptmcosmos-map-stats-schematic}
@@ -59,7 +59,7 @@
     \phantomlabel{fig:ptmcosmos-site-detail-venn}
     \phantomlabel{fig:ptmcosmos-site-detail-pathway-domain}
     \phantomlabel{fig:ptmcosmos-site-detail-phspho-tyr}
-    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/fig2_ptmcosmos_site_detail.pdf}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure2_ptmcosmos_site_detail.pdf}
     \caption[Descriptive analysis of the PTM sites in PTMcosmos.]{%
         Descriptive analysis of the PTM sites in PTMcosmos.
         \subref{fig:ptmcosmos-site-detail-venn}
@@ -74,13 +74,96 @@
 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/fig3_ptmcosmos_usage.pdf}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure3_ptmcosmos_usage.pdf}
     \caption[PTMcosmos usage demonstration.]{%
         PTMcosmos usage demonstration using β catenin phosphosites as an example. From right to left, the phosphosite S33, from the literature, is known to regulate the degradation of itself. The mutational impact analysis by HotPTM shows that endometrial cancer samples frequently harbor nearby mutations that disrupt this phosphosite. Finally, users can quickly check the relative abundance change at peptide level in every published CPTAC cohort.
     }
     \label{fig:ptmcosmos-usage-demo}
 \end{figure}
 
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:ptmcosmos-de-overview}
+    \phantomlabel{fig:ptmcosmos-ep300-prot-paint}
+    \phantomlabel{fig:ptmcosmos-ep300-hist-acetyl}
+    \phantomlabel{fig:ptmcosmos-ep300-assoc}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure4_ptmcosmos_ep300.pdf}
+    \caption[Differential expression analysis of sites in PTMcosmos.]{%
+        Differential expression analysis of sites in PTMcosmos.
+        \subref{fig:ptmcosmos-de-overview}
+        Overview of differentially expressed driver gene acetyl- and phosphosites across 8 cancer types.
+        \legendcontdnote
+    }
+    \label{fig:ptmcosmos-ep300}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:ptmcosmos-ep300}
+        \subref{fig:ptmcosmos-ep300-prot-paint}
+        Differentially expressed acetylsites of the acetyltransferase p300 mapped onto the protein's domain structure. The numbers shown in the circles represent the number of samples in a cohort detecting the given acetylsite.
+        \subref{fig:ptmcosmos-ep300-hist-acetyl}
+        Heatmap showing the significant Pearson correlations between the aggregate p300 acetylation score and histone acetylsites.
+        \subref{fig:ptmcosmos-ep300-assoc}
+        Mosaic plot showing the associations between p300 acetylation status and categorical variables such as tumor subtypes and the alteration status of significantly mutated genes.
+    }
+\end{figure}
+
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:ptmcosmos-rb1-prot-paint}
+    \phantomlabel{fig:ptmcosmos-rb1-e2f}
+    \phantomlabel{fig:ptmcosmos-lscc-ubiquityl}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure5_ptmcosmos_rb1.pdf}
+    \caption[Pan-cancer Rb phosphorylation analysis and LSCC ubiquitination analysis.]{%
+        Pan-cancer Rb phosphorylation analysis and LSCC ubiquitination analysis.
+        \legendcontdnote
+    }
+    \label{fig:ptmcosmos-rb1}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:ptmcosmos-rb1}
+        \subref{fig:ptmcosmos-rb1-prot-paint}
+        Overview of differentially expressed Rb phosphosites across 8 cancer types and the mapping of these phosphosites onto the domain structure of Rb. The numbers shown in circles represent the number of samples in the given cohort detecting a phosphosite.
+        \subref{fig:ptmcosmos-rb1-e2f}
+        Averaged expression of E2F target genes (``E2F score'') stratified by RB1 alteration status or Rb phosphorylation status.
+        \subref{fig:ptmcosmos-lscc-ubiquityl}
+        Correlation in lung squamous cell carcinoma between normalized ubiquitylsite abundance and cognate protein abundance for cancer driver genes.
+    }
+\end{figure}
+
+
+\begin{figure}[p]
+    \centering
+    \phantomlabel{fig:ptmcosmos-hotptm-enrich}
+    \phantomlabel{fig:ptmcosmos-hotptm-structure}
+    \phantomlabel{fig:ptmcosmos-hotptm-structure-complex}
+    \phantomlabel{fig:ptmcosmos-hotptm-pi3k}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure6_ptmcosmos_hotptm.pdf}
+    \caption[Spatial co-clustering of mutations and PTMs.]{%
+        Spatial co-clustering of mutations and PTMs.
+        \legendcontdnote
+    }
+    \label{fig:ptmcosmos-hotptm}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \legend{%
+        \legendcontdref{fig:ptmcosmos-hotptm}
+        \subref{fig:ptmcosmos-hotptm-enrich}
+        Enrichment of activating mutations among mutations co-clustering with PTMs.
+        \subref{fig:ptmcosmos-hotptm-structure}
+        Selected mutation-PTM clusters mapped onto crystal structures obtained from the Protein Data Bank. Red spheres represent the residues modified by PTM sites, while blue spheres represent the residues affected by mutations.
+        \subref{fig:ptmcosmos-hotptm-structure-complex}
+        Visualization of mutation-PTM clusters spanning protein complexes. Purple spheres represent residues affected by both PTM sites and mutations.
+        \subref{fig:ptmcosmos-hotptm-pi3k}
+        Relative abundance of the PIK3R1-Y452 phosphosite in BRCA and UCEC stratified by mutation co-clustering status.
+    }
+\end{figure}
 
 \section{Discussion}
 
