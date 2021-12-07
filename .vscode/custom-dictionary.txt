@@ -32,6 +32,8 @@ CARNS
 catenin
 CAVATICA
 CBTTC
+CCRCC
+CDAP
 CEBPB
 CIBERSOR
 CIBERSORT
@@ -124,6 +126,7 @@ HEPES
 HHATL
 Hiseq
 Histopathologically
+HNSCC
 Hochberg
 HPLC
 hypermethylation
@@ -161,6 +164,8 @@ LGALS
 LIMS
 LINCS
 lipidome
+LSCC
+LUAD
 Lumos
 Lurie
 lysate
@@ -197,11 +202,14 @@ Omni
 OPALIN
 oxog
 parameterizations
+PBTA
 PCBC
+PDAC
 PDGFRA
 PECAM
 Pedc
 peroxisomal
+PFAM
 pgdac
 phosphatases
 phosphatidylinositol
@@ -284,6 +292,9 @@ trimethylsilyl
 trimethylsilylated
 Tris
 trisphosphate
+ubiquitination
+ubiquitylsite
+UCEC
 UCSC
 UCSF
 ultrasonicator
