@@ -237,6 +237,7 @@ Prkdc
 PRODH
 proteogenome
 proteogenomic
+proteogenomics
 proteome
 proteomes
 proteomic
