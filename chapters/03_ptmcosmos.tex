@@ -8,7 +8,7 @@ PTMcosmos is a comprehensive database with an interactive web portal designed to
 
 
 \section{Introduction}
-Post-translational modifications (PTMs) act as "switches" of protein activity and have been shown to be commonly dysregulated in cancer, controlling the pathway activities and tumor phenotypes \cite{hanahand_weinbergra:HallmarksCancer2011}. Phosphorylation \cite{severr_bruggejs:SignalTransduction2015}, acetylation \cite{dimartilem_trisciuogliod:MultifacetedRole2016,gilj_encarnacion-guevaras:LysineAcetylation2017}, and ubiquitination \cite{dengl_wangp:RoleUbiquitination2020} have all be shown to play distinct roles in tumorigenesis. The known function of the detected PTM sites are curated through a long term effect by databases such as UniProt \cite{theuniprotconsortium_theuniprotconsortium:UniProtWorldwide2019} and PhosphoSitePlus \cite{hornbeckpv_skrzypeke:PhosphoSitePlus2015} by recording the reported publications and validation experiments. PTM dysregulation through mutations in cancer has been actively explored, where linearly and spatially closed mutations could disrupt the PTM site and affect the underlying protein function \cite{reimandj_badergd:MutationalLandscape2013,creixellp_lindingr:KinomewideDecoding2015,wagiho_badergd:MIMPPredicting2015,krassowskim_reimandj:ActiveDriverDBHuman2018,huangk_dingl:SpatiallyInteracting2021}.
+Post-translational modifications (PTMs) act as ``switches'' of protein activity and have been shown to be commonly dysregulated in cancer, controlling the pathway activities and tumor phenotypes \cite{hanahand_weinbergra:HallmarksCancer2011}. Phosphorylation \cite{severr_bruggejs:SignalTransduction2015}, acetylation \cite{dimartilem_trisciuogliod:MultifacetedRole2016,gilj_encarnacion-guevaras:LysineAcetylation2017}, and ubiquitination \cite{dengl_wangp:RoleUbiquitination2020} have all be shown to play distinct roles in tumorigenesis. The known function of the detected PTM sites are curated through a long term effect by databases such as UniProt \cite{theuniprotconsortium_theuniprotconsortium:UniProtWorldwide2019} and PhosphoSitePlus \cite{hornbeckpv_skrzypeke:PhosphoSitePlus2015} by recording the reported publications and validation experiments. PTM dysregulation through mutations in cancer has been actively explored, where linearly and spatially closed mutations could disrupt the PTM site and affect the underlying protein function \cite{reimandj_badergd:MutationalLandscape2013,creixellp_lindingr:KinomewideDecoding2015,wagiho_badergd:MIMPPredicting2015,krassowskim_reimandj:ActiveDriverDBHuman2018,huangk_dingl:SpatiallyInteracting2021}.
 
 Recent advancements in high-throughput multiplexed mass spectrometry have enabled consortia such as Clinical Proteomic Tumor Analysis Consortium (CPTAC) \cite{%
 zhangh_townsendrr:IntegratedProteogenomic2016,
@@ -36,6 +36,9 @@ Here we present PTMcosmos, a comprehensive database for the collection, annotati
 
 \section{Results}
 
+\subsection{Data collection and harmonization}
+We developed PTMcosmos, a web portal to provide a comprehensive resource to the proteogenomics community to study cancer \fref{fig:ptmcosmos-workflow}. Total 432,021 PTM sites were collected from two databases, UniProt Knowledge Base and PhosphoSitePlus, and two experimental proteomic consortia across 13 studies and 11 cancer types, CPTAC and ICPC \fref{fig:ptmcosmos-stats-cptac-by-cancer}. To study the mutational impact on PTMs, we also collected the somatic mutations from the matching CPTAC tumor samples and a pan-cancer collection from TCGA MC3 project \cite{ellrottk_tcga:MC3MutationCalling2018}. Additional protein annotations were loaded to bridge the proteins with their known biological functions, including the non redundant protein sequence archive from UniPar \cite{leinonenr_apweilerr:UniProtArchive2004}, standardized gene symbol, aliases and identifiers from HUGO Gene Nomenclature Committee (HGNC) \cite{brufordea_tweedies:GuidelinesHuman2020}, protein structures from Protein Data Bank (PDB) \cite{bermanhm_bournepe:ProteinData2000}, protein domains from InterPro \cite{blumm_finnrd:InterProProtein2021} and Pfam \cite{mistryj_batemana:PfamProtein2021}, and protein pathways and complexes from OmniPath \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016}.
+
 
 \begin{figure}[tb]
     \centering
@@ -44,21 +47,7 @@ Here we present PTMcosmos, a comprehensive database for the collection, annotati
     \label{fig:ptmcosmos-workflow}
 \end{figure}
 
-\begin{figure}[tbp]
-    \centering
-    \phantomlabel{fig:ptmcosmos-stats-by-cancer}
-    \phantomlabel{fig:ptmcosmos-stats-publications-per-ptm}
-    \phantomlabel{fig:ptmcosmos-stats-publications-per-year}
-    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure1_ptmcosmos_stats.pdf}
-    \caption[Supporting details of the mutation comparison.]{%
-        Supporting details of the mutation comparison.
-        \subref{fig:ptmcosmos-stats-by-cancer}
-        \subref{fig:ptmcosmos-stats-publications-per-ptm}
-        \subref{fig:ptmcosmos-stats-publications-per-year}
-    }
-    \label{fig:ptmcosmos-stats}
-\end{figure}
-
+To avoid ambiguous PTM location due to multiple protein sequence versions, we keep track of the underlying peptide sequences of the PTM sites and harmonized. We used UniProt Archive (UniParc) \cite{leinonenr_apweilerr:UniProtArchive2004} to check for sequence identity and performed global protein sequence alignment to mapped all the reported PTM sites to UniProt canonical protein isoforms (release 2021.02) (\fref{fig:ptmcosmos-map-stats-schematic}; Methods). For PhosphoSitePlus whose sequences are mostly based on UniProt, over 99.9\% of the PTM sites were reported on the proteins identical to UniProt. Only 0.3\% of them (n = 1,060) changed their coordinates after the mapping and only 0.01\% of them (n = 33) failed to be mapped to UniProt. Across the experiment cohorts where RefSeq protein sequences were used in the data generation (\tref{tab:ptmcosmos-peptide-db}), about 60--75\% of the PTM sites are reported on the identical protein sequences to UniProt, while 10--20\% of them changed their coordinates after the mapping and 1--3\% of them are not mappable (\fref{fig:ptmcosmos-map-stats-acetyl}--\subcaptionref{fig:ptmcosmos-map-stats-phospho}).
 
 \begin{figure}[tbp]
     \centering
@@ -70,12 +59,32 @@ Here we present PTMcosmos, a comprehensive database for the collection, annotati
     \caption[Supporting details of the peptide re-annotation and coordinate mapping.]{%
         Supporting details of the peptide re-annotation and coordinate mapping.
         \subref{fig:ptmcosmos-map-stats-schematic}
-        \subref{fig:ptmcosmos-map-stats-acetyl}
-        \subref{fig:ptmcosmos-map-stats-ubiquityl}
-        \subref{fig:ptmcosmos-map-stats-phospho}
+        A schematic representation of the peptide coordinate mapping using global protein sequence alignment. Peptides (a--e) including the flanking sequence are the PTM sites to be mapped. Only peptides (a--c) in the yellow regions produced by the sequence alignment are mappable. Peptide d is not mappable since only a parital of its sequence can be aligned. Peptide e is also not mappable due to a mismatch between the source and target protein sequences. PTM peptides mapability of \subref{fig:ptmcosmos-map-stats-acetyl} acetylation,
+        \subref{fig:ptmcosmos-map-stats-ubiquityl} ubiquitination,
+        \subref{fig:ptmcosmos-map-stats-phospho} phosphorylation CPTAC proteome datasets.
     }
     \label{fig:ptmcosmos-map-stats}
 \end{figure}
+
+By combining all the data sources and annotations. a total of 3.1 millions exhibits of PTM supporting evidences are collected from over 75 thousands of publications and other kinds of experimental validations in the database (\fref{fig:ptmcosmos-stats-publications-per-ptm}, \ref{fig:ptmcosmos-stats-publications-per-year}). The majority of PTM sites received 1--5 supporting publications, where the phosphosites are much more investigated and reported than other PTM types. Surprisingly, still a large number (> 20\%) of PTM sites have low to no literature support. Thanks to the massive effort of literature curation by UniProt and PhosphoSitePlus, the collected literature can be dated back to 1980s. Research of earlier days focused on the characterization of small number of PTM sites, whereas many new PTM sites were discovered using the high throughput methods.
+
+\begin{figure}[tbp]
+    \centering
+    \phantomlabel{fig:ptmcosmos-stats-cptac-by-cancer}
+    \phantomlabel{fig:ptmcosmos-stats-publications-per-ptm}
+    \phantomlabel{fig:ptmcosmos-stats-publications-per-year}
+    \includegraphics[width=\linewidth]{figures/chap03_ptmcosmos/figure1_ptmcosmos_stats.pdf}
+    \caption[Overview of experiment proteome datasets and distribution of PTM supporting evidence collected in PTMcosmos.]{%
+        Overview of experiment proteome datasets \subref{fig:ptmcosmos-stats-cptac-by-cancer} and distribution of PTM supporting evidence collected in PTMcosmos.
+        \subref{fig:ptmcosmos-stats-publications-per-ptm}
+        Distribution of supporting publications per PTM type.
+        \subref{fig:ptmcosmos-stats-publications-per-year}
+        Distribution of supporting publications along its publication time.
+    }
+    \label{fig:ptmcosmos-stats}
+\end{figure}
+
+
 
 \begin{figure}[tbp]
     \centering
