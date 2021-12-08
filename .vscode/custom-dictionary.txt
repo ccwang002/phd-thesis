@@ -24,6 +24,7 @@ bioinformatic
 bitgt
 BRCA
 broadcptac
+cadherin
 CALY
 CAMKV
 carbamidomethylation
@@ -59,8 +60,12 @@ cryoports
 cryopulverized
 Cseq
 CSTA
+CTCF
 CTNNB1
+cyclin
 cytometry
+cytoskeletal
+cytosolic
 Dako
 deconvolution
 degranulation
@@ -168,6 +173,7 @@ LGALS
 LIMS
 LINCS
 lipidome
+lipocalin
 LSCC
 LUAD
 Lumos
@@ -193,9 +199,11 @@ myristic
 MZmine
 NCBI
 Networ
+neuroendocrine
 neurotransmission
 nperm
 NTSR
+nucleophosmin
 OCLR
 Octadecyl
 oligodendrocyte
@@ -265,8 +273,10 @@ rxns
 SALL
 scid
 silico
+SMARCA
 Smirnov
 SNCG
+spectrin
 SPRI
 ssgsea
 Stralka
@@ -281,6 +291,7 @@ TCGA
 TCIA
 Tect
 telomere
+telomeres
 temozolomide
 TERT
 TGFBR
@@ -290,6 +301,7 @@ Toxo
 TPPP
 transcriptomic
 transcriptomics
+transferrin
 TREM
 trifluoroacetamide
 trifluoroacetic
