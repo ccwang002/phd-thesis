@@ -15,6 +15,11 @@
 ]
 \setmathfont{STIXTwoMath}[math-style=ISO]
 
+% Re-calculate the lengths of a text line using the current font
+\setlxvchars[\normalfont\normalsize]
+\setxlvchars[\normalfont\normalsize]
+\checkandfixthelayout[classic]
+
 % Enable refinements of typographics
 \usepackage[
     activate=true,
@@ -23,11 +28,6 @@
 ]{microtype}
 % Tweak Source Serif font like Times
 % \DeclareMicrotypeAlias{SourceSerif4}{ptm}
-
-% Re-calculate the lengths of a text line using the current font
-\setlxvchars[\normalfont\normalsize]
-\setxlvchars[\normalfont\normalsize]
-\checkandfixthelayout[classic]
 
 % Tweak LaTeX line breaking
 \midsloppy
@@ -94,9 +94,6 @@
 % define the bibliography path
 \addbibresource{references.bib}
 
-% Units
-\usepackage{siunitx}
-
 % Helper commands
 \newcommand{\gene}[1]{\textit{#1}}
 
@@ -130,9 +127,6 @@
     pdfauthor={\thesisauthor},
 }
 
-% Custom hypenation
-\babelhyphenation{}
-
 
 \begin{document}
 
@@ -141,8 +135,6 @@
 \thesiscopyright{%                  % Thesis copyright page
     \textcopyright~\degreeearnyear, Liang-Bo Wang}
 
-% microtype triggers harmless overfull \vbox
-% see https://tex.stackexchange.com/q/624171
 \SingleSpacing*
 \setSingleSpace{1.15}
 \tableofcontents*                   % Table of contents (ToC)
@@ -165,11 +157,10 @@
 \include{chapters/05_conclusion}
 
 \begin{SingleSpace}
-% \nocite{*}
 \printbibliography
 \end{SingleSpace}
 
 \appendix
-%\include{appendices/01_oss_pipeline_dev}
+% \include{appendices/01_oss_pipeline_dev}
 
 \end{document}
