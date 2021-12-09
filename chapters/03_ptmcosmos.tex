@@ -39,7 +39,7 @@ Here we present PTMcosmos, a comprehensive database for the collection, annotati
 \section{Results}
 
 \subsection{Data collection and harmonization}
-We developed PTMcosmos, a web portal to provide a comprehensive resource to the proteogenomics community to study cancer \fref{fig:ptmcosmos-workflow}. Total 432,021 PTM sites were collected from two databases, UniProt Knowledge Base and PhosphoSitePlus, and two experimental proteomic consortia across 13 studies and 11 cancer types, CPTAC and ICPC \fref{fig:ptmcosmos-stats-cptac-by-cancer}. To study the mutational impact on PTMs, we also collected the somatic mutations from the matching CPTAC tumor samples and a pan-cancer collection from TCGA MC3 project \cite{ellrottk_tcga:MC3MutationCalling2018}. Additional protein annotations were loaded to bridge the proteins with their known biological functions, including the non redundant protein sequence archive from UniPar \cite{leinonenr_apweilerr:UniProtArchive2004}, standardized gene symbol, aliases and identifiers from HUGO Gene Nomenclature Committee (HGNC) \cite{brufordea_tweedies:GuidelinesHuman2020}, protein structures from Protein Data Bank (PDB) \cite{bermanhm_bournepe:ProteinData2000}, protein domains from InterPro \cite{blumm_finnrd:InterProProtein2021} and Pfam \cite{mistryj_batemana:PfamProtein2021}, and protein pathways and complexes from OmniPath \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016}.
+We developed PTMcosmos, a web portal to provide a comprehensive resource to the proteogenomics community to study cancer \fref{fig:ptmcosmos-workflow}. Total 432,021 PTM sites were collected from two databases, UniProt Knowledge Base and PhosphoSitePlus, and two experimental proteomic consortia across 13 studies and 11 cancer types, CPTAC and ICPC \fref{fig:ptmcosmos-stats-cptac-by-cancer}. To study the mutational impact on PTMs, we also collected the somatic mutations from the matching CPTAC tumor samples and a pan-cancer collection from TCGA MC3 project \cite{ellrottk_tcga:MC3MutationCalling2018}. Additional protein annotations were loaded to bridge the proteins with their known biological functions, including the non redundant protein sequence archive from UniParc \cite{leinonenr_apweilerr:UniProtArchive2004}, standardized gene symbol, aliases and identifiers from HUGO Gene Nomenclature Committee (HGNC) \cite{brufordea_tweedies:GuidelinesHuman2020}, protein structures from Protein Data Bank (PDB) \cite{bermanhm_bournepe:ProteinData2000}, protein domains from InterPro \cite{blumm_finnrd:InterProProtein2021} and Pfam \cite{mistryj_batemana:PfamProtein2021}, and protein pathways and complexes from OmniPath \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016}.
 
 \begin{figure}[tb]
     \centering
@@ -116,7 +116,7 @@ Interestingly, among serine, threonine and tyrosine phosphosites, unique databas
 
 
 \subsection{PTMcosmos user interface}
-To facilitate a friendly user interface, we made all the information searchable on PTMcosmos in a similar design as UniProt (\fref{fig:ptmcosmos-usage-demo}). Users are able to query the gene and protein name of interest and the PTM information is organized on a protein basis. The page contains a protein feature viewer to show the location of PTM sites and protein domain along its sequence. For each PTM site, its supporting evidence is grouped into dropdown menus based on the evidence source and type. Details of each evidence exhibit is available in the dropdown menu, including the publication information, sequence similarity source, and the experiment cohorts detecting the site. For PTM sites with experiment datasets loaded in PTMcosmos, an additional interactive page is available for users to explore the PTM abundance in the dataset. For proteins with mutation and PTM spatial clusters reported by HotPTM, an interactive viewer is available for users to explore the protein structure annotated with the PTM-mutation clusters.
+To facilitate a friendly user interface, we made all the information searchable on PTMcosmos in a similar design as UniProt (\fref{fig:ptmcosmos-usage-demo}). Users are able to query the gene and protein name of interest and the PTM information is organized on a protein basis. The page contains a protein feature viewer to show the location of PTM sites and protein domain along its sequence. For each PTM site, its supporting evidence is grouped into dropdown menus based on the evidence source and type. Details of each evidence exhibit is available in the dropdown menu, including the publication information, sequence similarity source, and the experiment cohorts detecting the site. For PTM sites with experiment datasets loaded in PTMcosmos, an additional interactive page is available for users to explore the PTM abundance in the dataset. For proteins with mutation and PTM spatial clusters reported by HotPTM, an interactive viewer is available for users to explore the protein structure annotated with the PTM-mutation clusters. PTMcosmos is available at \url{https://ptmcosmos.wustl.edu} and is freely accessible to the public.
 
 \begin{figure}[tb]
     \centering
@@ -281,11 +281,17 @@ We anticipate that PTMcosmos will be used as a resource by the broader cancer re
 
 \section{Methods}
 
-\subsection{Data sources}
-\subsubsection{CPTAC proteomic data processing}
+\tightlists
+\subsection{Collection of data sources}
 
-\tref{tab:ptmcosmos-peptide-db} \url{https://github.com/ccwang002/cptac_proteome_preprocess}
+\subsubsection{Protein sequence sources and annotations}
+As shown in \fref{fig:ptmcosmos-workflow}, PTMcosmos loaded various public databases and annotations to provide known knowledge of genes, proteins and PTM sites. Gene information (symbol, aliases, identifier cross reference) as obtained from HUGO Gene Nomenclature Committee (HGNC) \cite{brufordea_tweedies:GuidelinesHuman2020} (release 2021-04-01). Protein sequences and annotations were obtained from UniProt Knowledge Base (UniProtKB) \cite{theuniprotconsortium_theuniprotconsortium:UniProtWorldwide2019}. Total the 20,203 protein entries of the reviewed human proteome with valid HGNC gene identifier were included and their canonical isoform sequences were used as the reference protein sequences (release 2021.02; query: ``reviewed:yes AND proteome:up000005640''). We utilized the non redundant protein sequence archive from UniParc \cite{leinonenr_apweilerr:UniProtArchive2004} to obtain an unique checksum and identifier based on the protein sequence. Based on the UniParc identifiers, we were able to pull together all the known cross reference identifiers associated to each sequence, including RefSeq and Ensembl protein IDs. Regarding additional protein information, we collected protein structures from Protein Data Bank (PDB) \cite{bermanhm_bournepe:ProteinData2000}, protein domains from InterPro \cite{blumm_finnrd:InterProProtein2021} and Pfam \cite{mistryj_batemana:PfamProtein2021}, and protein pathways and complexes from OmniPath \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016}.
 
+\subsubsection{PTM supporting evidence}
+We collected the PTM supporting evidence from UniProtKB (release 2021.02) and PhosphoSitePlus \cite{hornbeckpv_skrzypeke:PhosphoSitePlus2015} (ver 6.5.9.3 snapshot on 2021-04-19).
+
+\subsubsection{Experiment proteogenomics datasets from CPTAC and ICPC}
+Multiple cancer studies of CPTAC and ICPC were collected \tref{tab:ptmcosmos-peptide-db}. We used the peptide search results used by the original publication. For CPTAC studies, we also collected the somatic mutation calls, gene expression data, from the original datasets. Note that the experiment datasets were using different versions of the RefSeq protein sequences. To harmonize all the experiment datasets to have the same annotation format and re-mapped the reported PTM sites to the review UniProt proteome described above (see Methods below), we reprocessed and reformatted the data using the reproducible workflow at \url{https://github.com/ccwang002/cptac_proteome_preprocess}.
 
 \begin{table}[tbp]
     \centering
@@ -323,8 +329,11 @@ We anticipate that PTMcosmos will be used as a resource by the broader cancer re
     \end{threeparttable}
 \end{table}
 
+\subsubsection{Somatic mutations in cancer}
+We collected the somatic mutations from a pan-cancer collection from TCGA MC3 project \cite{ellrottk_tcga:MC3MutationCalling2018} (v0.2.8). Additionally, the somatic mutations from the matching CPTAC tumor were collected.
 
-\subsubsection{PTM coordinate harmonization and protein sequence alignment}
+
+\subsection{PTM coordinate harmonization and protein sequence alignment}
 Only considered the canonical reviewed UniProt entries
 If the identical protein sequence can be found, mapped to them directly
 Otherwise, perform global protein sequence alignment
@@ -332,4 +341,7 @@ To the UniProt entry of the same gene
 Create coordinate segments of consecutive matches (don't allow any amino acid mismatch)
 Only mapped the site when a full peptide (plus the 1 additional flanking aa) is in the coordinate segment
 
+
 \subsection{Database and website development}
+
+\defaultlists
