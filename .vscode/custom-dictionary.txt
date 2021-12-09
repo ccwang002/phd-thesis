@@ -57,6 +57,7 @@ covariates
 Covaris
 CPNE
 CPTAC
+CRDC
 CREBBP
 cryocart
 cryoport
@@ -100,6 +101,7 @@ EMILIN
 ENPP
 Ensembl
 ENST
+epigenomic
 epigenomics
 ERMN
 exome
@@ -122,6 +124,7 @@ FSTL
 GABRA
 GABRG
 GATK
+GDAC
 GISTIC
 glioblastoma
 gliogenesis
@@ -150,6 +153,7 @@ HTAN
 hypermethylation
 hypophosphorylated
 ICAM
+ICGC
 ICPC
 idat
 idats
