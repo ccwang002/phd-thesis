@@ -68,6 +68,7 @@ CSTA
 CTCF
 CTNNB1
 cyclin
+Cytomegalovirus
 cytometry
 cytoskeletal
 cytosolic
@@ -236,6 +237,7 @@ omics
 Omni
 OPALIN
 oxog
+Oxoguanine
 parameterizations
 PBTA
 PCBC
