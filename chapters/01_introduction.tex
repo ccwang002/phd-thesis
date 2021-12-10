@@ -48,7 +48,6 @@ Therefore, characterizing the functional impact of a mutation has been an area o
 Since the phenotypes of cancer hallmarks are achieved through abberant alterations at multiple molecular levels, a new paradigm to understand complex diseases like cancer is through the lens of multi-omics analysis \cite{deanda-jaureguig_hernandez-lemuse:ComputationalOncology2020}. Thanks to the recent advancements in high-throughput experiments (commonly termed ``omics''), we are able to profile the specimen systematically at a molecular level. Common omics assays include:
 
 \begin{itemize}
-    \tightlist
     \item Genomic: whole exome sequencing, whole genome sequencing
     \item Transcriptome: RNA sequencing, miRNA sequencing
     \item Epigenomics: DNA methylation microarray, whole genome bisulfite sequencing, ChIP-seq, ATAC-seq
@@ -107,6 +106,107 @@ However, the data harmonization ultimately changes the final output of the genom
 Gene naming \cite{fujiyoshik_oginos:OpinionStandardizing2021}
 \cite{brufordea_tweedies:GuidelinesHuman2020}
 
+\begin{SingleSpace}
+\begin{table}[tbp]
+    \centering
+    \caption{Comparison of commonly used annotations.}
+    \label{tab:intro-anno}
+
+    \footnotesize
+    \begin{subtable}{1\linewidth}
+        \centering
+        \subcaption{Gene level}\label{tab:intro-anno-gene}
+        \begin{tabular}{lllp{15em}}
+            \toprule
+            Identifier      & Example   & Sequence  & Notes \\
+            \midrule
+            Gene symbol     & EGFR      & -         &
+            \begin{tablist}
+                \item Biologically meaningful name
+                \item Often change over time
+            \end{tablist}\\
+            HUGO Gene ID    & HGNC:3236 & -         &
+            \begin{tablist}
+                \item Stable
+                \item IDs can be deprecated
+            \end{tablist}\\
+            Ensembl         & ENSG00000146648\textbf{.20} & - &
+            \begin{tablist}
+                \item Stable
+            \end{tablist} \\
+            NCBI Entrez	    & 1956      & -         &
+            \begin{tablist}
+                \item Stable
+                \item Difficult to cross-reference
+            \end{tablist} \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+
+    \vspace{0.5\baselineskip}
+    \begin{subtable}{1\linewidth}
+        \centering
+        \subcaption{Transcript level}\label{tab:intro-anno-transcript}
+        \begin{tabular}{lllp{15em}}
+            \toprule
+            Identifier      & Example           & Sequence   & Notes \\
+            \midrule
+            Ensembl         & ENST00000275493\textbf{.7}    & Stable &
+            \begin{tablist}
+                \item Recommended
+                \item Wildly in use
+            \end{tablist}\\
+            RefSeq          & NM\_005228\textbf{.5}         & Stable &
+            \begin{tablist}
+                \item Lack stable genomic location
+                \item Lack batch release
+            \end{tablist}\\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+
+    \vspace{0.5\baselineskip}
+    \begin{subtable}{1\linewidth}
+        \centering
+        \subcaption{Protein level}\label{tab:intro-anno-protein}
+        \begin{tabular}{lllp{15em}}
+            \toprule
+            Identifier      & Example           & Sequence   & Notes \\
+            \midrule
+            Ensembl         & ENSP00000275493\textbf{.2}    & Stable &
+            \begin{tablist}
+                \item Redundant
+            \end{tablist}\\
+            RefSeq          & NP\_005219\textbf{.2}         & Stable &
+            \begin{tablist}
+                \item Non-redundant
+                \item Lack batch release
+            \end{tablist}\\
+            UniProt         & P00533\textbf{.v2}            & Unstable &
+            \begin{tablist}
+                \item Non-redundant
+                \item Wildly in use
+                \item Rich metadata
+                \item Hidden versioning
+                \item Lack genomic location
+                \item Hard to work on old releases
+            \end{tablist}\\
+            UniProt isoform & P00533\textbf{-1.v2}          & Stable &
+            \begin{tablist}
+                \item Rarely in use
+            \end{tablist}\\
+            UniParc         & UPI000003E750                 & Stable &
+            \begin{tablist}
+                \item Non-redundant
+                \item Permanent
+                \item Rarely in use
+                \item Hard to cross-ref to transcripts
+            \end{tablist}\\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+\end{table}
+\end{SingleSpace}
 
 
 \subsection{Unaccounted batch effects}

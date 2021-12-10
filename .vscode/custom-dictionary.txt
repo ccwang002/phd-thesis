@@ -102,7 +102,9 @@ EMCN
 EMILIN
 ENPP
 Ensembl
+ENSG
 ENST
+Entrez
 epigenomic
 epigenomics
 ERMN

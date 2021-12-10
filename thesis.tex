@@ -43,6 +43,20 @@
 % default URL style
 \urlstyle{same}
 
+% List environment customization
+\usepackage{enumitem}
+\newlist{tablist}{itemize}{1}
+\makeatletter
+\newcommand*{\compress}{\@minipagetrue}
+\makeatother
+\setlist[tablist]{
+    label=\textbullet,
+    left=0pt,
+    nosep,
+    before=\compress,
+    after=\vspace{-0.75\baselineskip},
+}
+
 % Tables
 \usepackage{threeparttable}
 \usepackage{multirow}  % allow multiple lines in a table cell
