@@ -80,9 +80,9 @@
 
 % Add a note for figure caption spanning multiple pages
 \newcommand{\legendcontdnote}{%
-    \footnotesize\itshape%
-    \sourceatright[2em]{(legend continued on next page)}%
-}
+    \sourceatright[2em]{%
+        \footnotesize\itshape(legend continued on next page)%
+}}
 \newcommand{\legendcontdref}[1]{%
     \emph{(\fref{#1} continued)}%
 }
