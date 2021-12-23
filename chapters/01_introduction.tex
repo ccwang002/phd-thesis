@@ -81,13 +81,16 @@ To allow comparison and integration between different datasets, a set of standar
 However, the data harmonization ultimately changes the final output of the genomic pipelines, which might introduce unknown technical artifacts and biases that might affect the downstream biological interpretation. While such differences can be spotted by comparing the outputs on the same input sequence data, it is difficult to explain the differences due to the complicated implementation (e.g. the reason a mutation is called or filtered). Non-trivial efforts are required to characterize the pipeline differences and summarize in less technical terms.
 
 
-% \subsection{Annotation difference}
-% Data management
+\subsection{Annotation difference}
 % gene annotation difference
 %     gene symbol
 %     gene version
 %     annotation across different data types
-
+\begin{itemize}
+    \item Cross-reference between annotation systems
+    \item Cross-reference across versions of the different versions of the same annotation systems
+    \item Cross-reference with and without sequence (RNA and protein) identity
+\end{itemize}
 
 % Gene naming \cite{fujiyoshik_oginos:OpinionStandardizing2021, brufordea_tweedies:GuidelinesHuman2020} \tref{tab:intro-anno}
 
