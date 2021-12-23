@@ -3,29 +3,6 @@
 \tightlists
 % Intro: slightly more than 30 pages in a review form, and set up framework (topics and challenges) for the projects
 
-% Cancer
-% mutation
-% Multi-omics
-
-% PTM
-% heterogeneity
-% tumor microenvironment
-% precision medicine
-
-
-% Large scale patient samples collection (consoritum works)
-
-% data portal
-
-% data sharing
-% pipeline execution
-% gene annotation
-% integration
-
-
-% GBM
-
-% Outline of the dissertation
 
 
 \section{Cancer and precision medicine}
@@ -63,24 +40,33 @@ Conducting multi-omics characterization of cancer naturally calls for large scal
 
 
 \subsection{Precision medicine}
+Through comprehensive multi-omics characterization of a large number of tumors, we are able to provide individualized treatments targeting a particular molecular trait of a patient's tumor, thus termed as precision medicine \cite{collinsfs_varmush:NewInitiative2015,moscowja_schilskyrl:EvidenceFramework2018,bergermf_mardiser:EmergingClinical2018,rodriguezh_lowydr:NextHorizon2021,chenf_dingl:MovingPancancer2021}.
+The precision medicine impacts cancer treatment in two aspects: patient stratification and targeted therapeutic options.
+Conceptually, the common driver genetic alterations shared by multiple tumors of the same cancer type are good candidates for targeted therapy.
+For example, EGFR inhibitors are developed to treat glioblastoma, lung cancer, and breast cancer patients with EGFR amplifications or alterations \cite{ciardiellof_tortorag:EGFRAntagonists2008}.
+On the other hand, the patient stratification is also improved by precision medicine thanks to the targeted therapy.
+Our better understanding of the molecular traits of cancer has improved the clinical classification for many cancer types.
 
-% Due to the random nature of oncogenesis, each tumor is different in their mutational profile.
+There are a few challenges and directions for precision medicine to be more applicable to more cancer patients and to be more effective.
+The genomic landscape of cancer needs to be better characterized to identify the potential targetable alteration events \cite{bedardpl_siull:TumourHeterogeneity2013,hymandm_baselgaj:ImplementingGenomeDriven2017,dagogo-jacki_shawat:TumourHeterogeneity2018}.
+Due to the random nature of tumor evolution, strong heterogeneity exists across tumors and sometimes even within the tumor of a patient \cite{bedardpl_siull:TumourHeterogeneity2013,dagogo-jacki_shawat:TumourHeterogeneity2018}.
+Similarly, tumors under a certain target therapy, a strong selection force, often develop resistance eventually by utilizing a different and un-targetable molecular alteration \cite{dagogo-jacki_shawat:TumourHeterogeneity2018}.
+New clinical trial designs need to be developed to test the efficacy of the targeted treatment \cite{bedardpl_siull:TumourHeterogeneity2013}.
+
+While sequencing based technologies enable the large scale genomic characterization of tumor, the proteomic landscape of tumor remains elusive \cite{zhangb_paulovichag:ClinicalPotential2019,rodriguezh_lowydr:NextHorizon2021}.
+Proteins and protein modifications are the functional outputs of the genomic alterations, and are also the direct targets of most therapeutic interventions.
+Proteogenomics, the fusion of proteomics and genomics, should be considered to provide a more comprehensive characterization of cancer.
+Finally, new data modalities such as imaging can improve the disease diagnosis and classification \cite{berak_madabhushia:ArtificialIntelligence2019}.
+Together, precision medicine for cancer patients can be benefited by the improved multi-omics characterization and our better understanding of the relationship between molecular features and the pheontypes of tumors.
 
 
-% Our lab has also studied the effect of coding mutations on protein structure \cite{niu_protein-structure-guided_2016}. \citeauthor{niu_protein-structure-guided_2016} found that mutations cluster spatially in the functional protein domains of driver genes. For example, mutations clustering near an EGFR phosphotyrosine site in the 3D tertiary structure have been shown to increase autophosphorylation levels and EGFR activity \cite{niu_protein-structure-guided_2016}.
-
-% Many somatic mutations have unknown significance; transition to PTM
-%  Since post-translational modifications (PTMs) are known to be essential for signal transduction \cite{hunter_signaling2000_2000}, I propose to explore the functional impacts of mutations by investigating their effects on PTMs.
-
-
-% TODO: need a section to describe TCGA, CPTAC and HTAN
 
 \section{Computational challenges in large-scale multi-omics studies}
 Large scale multi-omics studies produce massive amounts of data, providing insights into complicated biological systems and allowing researchers to generate hypotheses from their research angle. However, they also introduce a new set of computational challenges that impede the utility of the data \cite{marxv_marxv:DrillingBig2013,deanda-jaureguig_hernandez-lemuse:ComputationalOncology2020}, which can be summarized into the four foundational principles using FAIR guideline: Findability, Accessibility, Interoperability, and Reusability \cite{wilkinsonmd_monsb:FAIRGuiding2016}. In this study, we focus on the data harmonization and annotation cross-reference.
 
 
 \subsection{Data harmonization on centralized repositories}
-The Cancer Genome Atlas (TCGA) \cite{hutterc_zenklusenjc:CancerGenome2018} and the International Cancer Genomics Consortium (ICGC) \cite{internationalcancergenomeconsortium_yangh:InternationalNetwork2010} are among the early large scale cancer multi-omics studies that collected genomic, transcriptome, and epigenomic data from tens of thosands patients. Theses studies then developped their data repositories to accommodate and process their multi-omics datasets, including NCI Genomics Data Commons (GDC)\footnotemark{} \cite{heathap_grossmanrl:NCIGenomic2021} and ICGC Data Portal \cite{jolyy_chalmersd:DataSharing2012}. To date (2012), GDC has included 13 different cancer genomic programs and has become the \textit{de facto} cancer genomics data repository. With the success of GDC, a bigger framework of ``Data Commons'', NCI Cancer Research Data Commons (CRDC) \cite{hinksoniv_kibbewa:ComprehensiveInfrastructure2017}, has been proposed to provide data repositories for other data types and they are under active development:
+The Cancer Genome Atlas (TCGA) \cite{hutterc_zenklusenjc:CancerGenome2018} and the International Cancer Genomics Consortium (ICGC) \cite{internationalcancergenomeconsortium_yangh:InternationalNetwork2010} are among the early large scale cancer multi-omics studies that collected genomic, transcriptome, and epigenomic data from tens of thosands patients. Theses studies then developped their data repositories to accommodate and process their multi-omics datasets, including NCI Genomics Data Commons (GDC)\footnotemark{} \cite{grossmanrl_staudtlm:SharedVision2016,heathap_grossmanrl:NCIGenomic2021} and ICGC Data Portal \cite{jolyy_chalmersd:DataSharing2012}. To date (2012), GDC has included 13 different cancer genomic programs and has become the \textit{de facto} cancer genomics data repository. With the success of GDC, a bigger framework of ``Data Commons'', NCI Cancer Research Data Commons (CRDC) \cite{hinksoniv_kibbewa:ComprehensiveInfrastructure2017}, has been proposed to provide data repositories for other data types and they are under active development:
 \begin{itemize}
     \item Proteomic Data Commons: \url{https://pdc.cancer.gov/pdc/}
     \item Imaging Data Commons: \url{https://portal.imaging.datacommons.cancer.gov/}, superceding The Cancer Imaging Archive (TCIA) \url{https://www.cancerimagingarchive.net/}
@@ -90,7 +76,7 @@ The Cancer Genome Atlas (TCGA) \cite{hutterc_zenklusenjc:CancerGenome2018} and t
     There are a few precursor initiatives before NCI GDC to harmonize and process the TCGA datasets. For example, Firehose developed by Broad Institute's Genome Data Analysis Center (GDAC) \cite{marxv_marxv:DrillingBig2013} has been processing TCGA datasets using standardized pipelines. See \url{https://gdac.broadinstitute.org/} and \url{https://broadinstitute.atlassian.net/wiki/spaces/GDAC/}. The Firehose results are released with tracked and document version, which laid the foundation of the infrastructure design for future projects like GDC.
 }
 
-To allow comparison and integration between different datasets, a set of standardized pipelines are developed by GDC to process all the raw data uniformly \cite{zhangz_grossmanrl:UniformGenomic2021}. The pipelines cover typical genomics data, including whole exome sequencing (WXS or WES), whole genome sequencing (WGS), RNA-Seq, and DNA methylation microarray. The pipelines specifies the tool, version, and parameters for sequence alignment and further downstream processing that are applied the same to every sample in the data repository. The pipelines are designed to handle various sequencing artifact and combine the best practices known to the research community. For example, the genome reference (GRCh38.d1.vd1) contains human decoy sequences and cancer related virus genomes (e.g. Cytomegalovirus [CMV], Epstein-Barr virus [EBV], Hepatitis B virus [HBV], Hepatitis C virus [HCV], and Human immunodeficiency virus [HIV]) to improve the sequence alignment quality \cite{zhangz_grossmanrl:UniformGenomic2021}. The WES somatic mutation calling pipeline built on the evolving best practices throughout the development of TCGA and ICGC-TCGA Dialogue for Reverse Engineering Assessments and Methods (DREAM) challenges \cite{ewingad_boutrospc:CombiningTumor2015,ellrottk_tcga:MC3MutationCalling2018}. The pipeline implements various annotations and filtering to improve the mutation calling, including a panel of normal samples to filter false-positive, contamination, and germline variants; 8-Oxoguanine (OxoG) DNA lesion introduced by the excessive oxidation during the sequencing library preparation; contamination removal.
+To allow comparison and integration between different datasets, a set of standardized pipelines are developed by GDC to process all the raw data uniformly \cite{grossmanrl_staudtlm:SharedVision2016,zhangz_grossmanrl:UniformGenomic2021}. The pipelines cover typical genomics data, including whole exome sequencing (WXS or WES), whole genome sequencing (WGS), RNA-Seq, and DNA methylation microarray. The pipelines specifies the tool, version, and parameters for sequence alignment and further downstream processing that are applied the same to every sample in the data repository. The pipelines are designed to handle various sequencing artifact and combine the best practices known to the research community. For example, the genome reference (GRCh38.d1.vd1) contains human decoy sequences and cancer related virus genomes (e.g. Cytomegalovirus [CMV], Epstein-Barr virus [EBV], Hepatitis B virus [HBV], Hepatitis C virus [HCV], and Human immunodeficiency virus [HIV]) to improve the sequence alignment quality \cite{zhangz_grossmanrl:UniformGenomic2021}. The WES somatic mutation calling pipeline built on the evolving best practices throughout the development of TCGA and ICGC-TCGA Dialogue for Reverse Engineering Assessments and Methods (DREAM) challenges \cite{ewingad_boutrospc:CombiningTumor2015,ellrottk_tcga:MC3MutationCalling2018}. The pipeline implements various annotations and filtering to improve the mutation calling, including a panel of normal samples to filter false-positive, contamination, and germline variants; 8-Oxoguanine (OxoG) DNA lesion introduced by the excessive oxidation during the sequencing library preparation; contamination removal.
 
 However, the data harmonization ultimately changes the final output of the genomic pipelines, which might introduce unknown technical artifacts and biases that might affect the downstream biological interpretation. While such differences can be spotted by comparing the outputs on the same input sequence data, it is difficult to explain the differences due to the complicated implementation (e.g. the reason a mutation is called or filtered). Non-trivial efforts are required to characterize the pipeline differences and summarize in less technical terms.
 
