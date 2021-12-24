@@ -22,7 +22,9 @@ Encountered in \Cref{chap:mut-pipeline-qc} and \ref{chap:ptmcosmos}, the choice 
 
 There are some ongoing efforts towards an optimal solution of annotation cross reference with sequence identity at transcript level. The Matched Annotation from NCBI and EMBL-EBI (MANE) project (\url{https://www.ncbi.nlm.nih.gov/refseq/MANE/}) is a collaboration of RefSeq and Ensembl, the two most commonly used annotation systems, to unify the transcript models of human genes. The goal of MANE is to provide a set of matching RefSeq and Ensembl transcripts of protein-coding genes, where the matched transcripts have identical sequences, including 5' UTR, coding region and 3' UTR. The latest version (v0.95 released on 2021-06-16) of MANE covers over 95\% of the human protein-coding genes, where every gene has at least one matching transcript. This is an exciting milestone since most of the daily analysis and disease relevant genes can be covered and we start to see more bioinformatic tools prioritize the matched annotations and gene models. This will greatly reduce the incompatibility in the annotation cross reference between RefSeq and Ensembl. The Ensembl Transcript Archive (Ensembl Tark; \url{https://tark.ensembl.org/}) tackles the probelm from a different angle. By archiving all the transcript sequences and their gene models across all Ensembl and RefSeq releases, Tark is able to systematically compare the gene model changes across any two different transcripts of the same gene. While it doesn't solve the sequence identity mapping problem, it is hugely beneficial that users can now easily select compatible sets of annotations. For example, protein based analyses only consider the identity of the protein coding sequencing, so more transcripts will be compatible even if their UTR sequences are unmatched.
 
-% Todo: protein sequence identity
+At the protein level, UniParc \cite{leinonenr_apweilerr:UniProtArchive2004} provides a comprehensive collection of all recorded protein sequences and their annotations to external databases, which can also be used to check for sequence identity of two proteins.
+However, it lacks the interface to systematically check all the proteins of one annotation sources and does not show the sequence difference for two unmatched proteins. Future work should consider a system similar to MANE or Ensembl Tark to allow users to easily map the proteins across different annotation systems. The coordinating mapping algorithm developed by PTMcosmos for PTM sites can be generalized as a standalone application for protein cross reference.
+
 
 
 \section{Pan-cancer PTM study with experimental validation}
@@ -52,6 +54,7 @@ Our proteogenomic characterization provides a glimpse into the better disease un
         CPTAC GBM study future plan.
         \subref{fig:cptac-gbm-future-plan-longitudinal} Longitudinal collection of tumor samples and paired normal samples.
         \subref{fig:cptac-gbm-future-plan-heterogeneity} Tumor heterogeneity using single cell technologies.
+        \sourceatright[2em]{\footnotesize Created with BioRender.com}
     }
     \label{fig:cptac-gbm-future-plan}
 \end{figure}
