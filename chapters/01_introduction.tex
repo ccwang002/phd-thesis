@@ -91,19 +91,17 @@ There are a few ``camps'' of annotation systems that curate and maintain biologi
 Each camp, or each annotation system, is a comprehensive set of annotations independently, containing gene-level, transcript-level, and protein-level information using their own systems of IDs.
 Some commonly used identifies are shown in \tref{tab:intro-anno}.
 Unfortunately, all the annotation systems are useful in some applications, so the community lacks a consensus for the ``favorite'' or the ``best'' annotation system, resulting in a fragmented and distinct adoption of the annotation system and identifiers by different projects.
-Depending on the use cases, the challenges for ID mappability, also known as the cross-reference, can be categorized as below:
+Moreover, the mappability of two IDs may change based on whether the sequence identity is required.
+Therefore, the challenges for ID mappability, also known as the cross-reference, can be categorized as below:
 \begin{itemize}
     \item Cross-reference between annotation systems
     \item Cross-reference across versions of the different versions of the same annotation systems
     \item Cross-reference with and without sequence (RNA and protein) identity
 \end{itemize}
+Each scenario requires different solutions and may generate different ID mappings.
 
-
-Moreover, the mappability of two IDs may depend on the user purpose.
-In some cases, users just want the the ID mapping that are biologically similar.
-In other cases, the sequence identity is required for the ID mapping.
-
-\cite{shermanbt_lempickira:DAVIDKnowledgebase2007}
+The cross-reference between annotation systems is the most common scenario and there have been multiple solutions existed for end users to convert their identifiers freely \cite{shermanbt_lempickira:DAVIDKnowledgebase2007, zhangj_kasprzyka:BioMartData2011, smedleyd_kasprzyka:BioMartCommunity2015}.
+However many existing solutions built by external parties have not been updated and the mapping results are outdated.
 
 
 
