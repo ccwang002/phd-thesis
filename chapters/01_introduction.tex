@@ -1,7 +1,6 @@
 \chapter{Introduction}
 \label{chap:intro}
 \tightlists
-% Intro: slightly more than 30 pages in a review form, and set up framework (topics and challenges) for the projects
 
 
 
@@ -284,8 +283,8 @@ The third and current CPTAC phase, CPTAC3, is exploring the proteogenomic landsc
 
 
 
-\section{Glioblastoma}
-GBM is the most common primary malignant brain tumor with an incidence of 3.22 per 100,000 persons in the United States, a median survival of less than 2 years from diagnosis \cite{delgado-lopezpd_corrales-garciaem:SurvivalGlioblastoma2016,ostromqt_barnholtz-sloanjs:CBTRUSStatistical2019,ostromqt_barnholtz-sloanjs:CBTRUSStatistical2020} and limited treatment options \cite{limm_wellerm:CurrentState2018,reifenbergerg_wellerm:AdvancesMolecular2017}.
+\section{Glioblastoma (GBM)}
+Glioblastoma (GBM) is the most common primary malignant brain tumor with an incidence of 3.22 per 100,000 persons in the United States, a median survival of less than 2 years from diagnosis \cite{delgado-lopezpd_corrales-garciaem:SurvivalGlioblastoma2016,ostromqt_barnholtz-sloanjs:CBTRUSStatistical2019,ostromqt_barnholtz-sloanjs:CBTRUSStatistical2020} and limited treatment options \cite{limm_wellerm:CurrentState2018,reifenbergerg_wellerm:AdvancesMolecular2017}.
 TCGA surveyed 206 GBMs with genomic and transcriptomic profiling \cite{tcga_network:GBM2008}, extending the subclassifications developed by Aldape and colleagues \cite{phillipshs_aldapek:MolecularSubclasses2006,verhaakrgw_hayesdn:IntegratedGenomic2010}.
 The current view is that IDH-wild type GBMs fall into three distinct subclasses: proneural, classical, and mesenchymal, based on genomic alterations and gene expression signatures \cite{tcga_network:GBM2008,verhaakrgw_hayesdn:IntegratedGenomic2010,brennancw_chinl:GBM2013,ceccarellim_verhaakrgw:MolecularProfiling2016,noushmehrh_aldapek:IdentificationCpG2010,wangq_verhaakrgw:TumorEvolution2017}.
 The tumor microenvironment may also play an important role in GBM pathogenesis, where tumor-associated macrophages (TAMs) comprise the majority of the immune population \cite{charlesna_kettenmannh:BrainTumor2012,hambardzumyand_kettenmannh:RoleMicroglia2016,quaildf_joyceja:MicroenvironmentalLandscape2017}.
@@ -306,6 +305,16 @@ Hence, there is an urgent need for a more nuanced understanding of tumor cells b
     }
     \label{fig:intro-cptac-gbm-study-design}
 \end{figure}
+
+As a result, GBM is selected as one of the cancer type to be studied in CPTAC using proteogenomic multi-omics assays.
+\fref{fig:intro-cptac-gbm-study-design} shows the CPTAC GBM experiment design.
+In the GBM discovery cohort, GBM pre-treatment primary tumor segments are collected from the patients and cryopulverized into powder, later distributed to different downstream multi-omics assays.
+For selected tumor samples, single cell sequencing experiments were conducted to capture the gene expression and chromatin accessibility at single cell level.
+
+
+
+\section{A toolbox for multi-omics analysis and proteogenomic characterization of glioblastoma}
+My thesis work contributes to precision oncology with two directions: expanding the computational toolbox for multi-omics analysis and building insights into disease biology and treatment of glioblastoma. In \Cref{chap:mut-pipeline-qc}, we profiled the somatic mutation calling pipeline, one of the the data harmonization pipelines on GDC to ensure they can be confidently used on multiple large-scale studies and identified the technical artifacts introduced by different pipelines. In \Cref{chap:ptmcosmos}, we built PTMcosmos, a web portal to collect PTM annotations and CPTAC experimental data to allow users to study the function of PTM in cancer. Finally, in \Cref{chap:cptac-gbm-discov}, we performed proteogenomic characterization of GBM as part of the CPTAC studies and provided potential patient stratifications and additional therapeutic avenues.
 
 
 
