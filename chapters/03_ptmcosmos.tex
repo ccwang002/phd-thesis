@@ -336,14 +336,78 @@ We collected the somatic mutations from a pan-cancer collection from TCGA MC3 pr
 
 
 \subsection{PTM coordinate harmonization and protein sequence alignment}
-Only considered the canonical reviewed UniProt entries
-If the identical protein sequence can be found, mapped to them directly
-Otherwise, perform global protein sequence alignment
-To the UniProt entry of the same gene
-Create coordinate segments of consecutive matches (don't allow any amino acid mismatch)
-Only mapped the site when a full peptide (plus the 1 additional flanking aa) is in the coordinate segment
+Only the reviewed UniProt entries and the protein sequences of their canonical isoform were considered for the PTM coorindate harmonization.
+The protein sequences were firsted annotated using UniParc IDs to allow faster cross-reference checking to identify the identical proteins.
+The mapping pairs of the source and target proteins were selected based on the HGNC gene IDs.
+
+For each source and target protein mapping pairs, if their protein sequences are identical, the coordinates are copied.
+Otherwise, we performed global protein pairwise sequence alignment to generate the mappable regions based on the alignment result. Such mappable regions were exported as a mapping table for future reference.
+While mapping a PTM site, only the full peptides (including the cleavage site) that reside in the mappable regions (without any mismatch) are mappable.
 
 
-% \subsection{Database and website development}
+\subsection{Database and website development}
+All the data sources and annotations were first collected and processed under the code repository at \url{https://github.com/ding-lab/ptmcosmos_preprocess}. All the information were processed and stored to match the database schema as closely as possible. The website logics and scripts to load the processed data were developed at another code repository at \url{https://github.com/ding-lab/ptmcosmos}.
+
+
+
+\subsection{Tumor-normal differential PTM abundance}
+Differential expression analysis was carried out in each cancer type using unpaired Wilcoxon rank sum tests to compare the site level abundance of driver gene PTM sites between tumor samples and normal adjacent tissue. PTM sites with a $\log_2$ median fold change of at least 1 in absolute value, FDR less than 0.05 and a detection rate of greater than 50\% across samples were selected for further investigation. We used PTMcosmos to prioritize functional PTM sites, in particular selecting for phosphosites with unique literature count greater than 30, and acetylsites and ubiquitylsites with unique evidence count or unique literature count greater than 30. Sites passing these criteria were then manually filtered through literature search and PhosphoSitePlus to select sites with known biological relevance. This set of sites was combined with PTM sites showing enriched detection in tumor samples or significant mutation overlap for further analysis.
+
+
+\subsection{Pathway and complex analysis using OmniPath}
+To identify upstream and downstream pathway alterations associated with each site of interest, we used OmniPathDb \cite{tureid_saez-rodriguezj:OmniPathGuidelines2016} to query upstream enzymes, upstream interacting proteins, downstream PTM sites and downstream interacting proteins. For each of these four categories, the abundance of each site of interest was regressed against the abundance of the proteins or PTM sites queried from OmniPathDb provided that both the site of interest and protein or PTM site queried from OmniPathDb were detected in at least 30\% of the tumor samples. Associations with p-value less than 0.05 and R squared greater than 0.2 were manually filtered through literature search and PhosphoSitePlus to obtain a set of biologically relevant associations.
+
+
+\subsection{\gene{RB1} analyses}
+
+\subsubsection{E2F score/aggregate Rb phospho}
+To generate an E2F score, E2F target genes were collected from NCBI BioSystems Database (``E2F transcription factor network''). For each cancer type, the RNA expression of each E2F target gene was scaled across samples, and an E2F score was computed for each sample by averaging the scaled expression of each E2F target gene. Similarly, for each cohort an aggregate phospho-Rb score was generated through averaging the scaled abundance of each Rb phosphosite detected in more than 50\% of tumor samples.
+
+\subsubsection{RB1 genetic alteration groups}
+We grouped tumor samples based on their RB1 copy number and mutation status. Specifically, we used the following criteria to define RB1 copy number groups for each cohort:
+\begin{itemize}
+    \item LUAD: 0.3 for $\log_2$ copy number values (deletion < -0.3, amplification > 0.3)
+    \item CCRCC: 0.3 for $\log_2$ copy number values (deletion < -0.3, amplification > 0.3)
+    \item GBM: 0.3 for $\log_2$ copy number values (deletion < -0.3, amplification > 0.3)
+    \item UCEC: 0.2 for $\log_2$ copy number values (deletion < -0.2, amplification > 0.2)
+    \item CRC: deletion < 0, amplification > 0 for GISTIC values
+    \item OV: 0.3 for $\log_2$ copy number values (deletion < -0.3, amplification > 0.3)
+    \item HNSCC: deletion < 0, amplification > 0 for GISTIC values (``SCNA\_call\_gene\_level.cct'')
+    \item LSCC: deletion < 0, amplification > 0 for GISTIC values (thresholded)
+\end{itemize}
+Additionally, samples with RB1 mutations were included. Samples with both RB1 copy number alterations and somatic mutations were included in the ``RB1 mutant'' group.
+
+
+\subsection{Upstream kinase associations}
+For each cohort, the association of the aggregate Rb phosphorylation score with the protein abundance of each Cdk protein was tested using the R function \textquotedbl{}cor.test\textquotedbl{} with method=\textquotedbl{}pearson\textquotedbl{}.
+
+
+\subsection{p300 analyses}
+
+\subsubsection{Correlation with histone acetylation}
+For each cohort, we tested the correlation between the aggregate p300 acetylation score and the abundance of each acetylsite detected in more than half of the tumor samples for that cohort. Histone acetylsites whose associations had FDR < 0.05 and correlation coefficient greater than 0.4 were selected for further investigation.
+
+\subsubsection{Differentially expressed genes across p300 groups}
+Using the aggregate p300 acetylation score, we grouped tumor samples into p300-acetylation high (>75\% percentile of p300 acetylation score), p300-acetylation low (<25\% percentile of p300 acetylation score) and p300-acetylation mid (>25\% percentile and <75\% percentile). Using both transcriptomics and proteomics data, we analyzed the genes upregulated in the p300-acetylation high group compared to the p300-acetylation low group through conducting differential expression testing (unpaired Wilcoxon rank-sum test), adjusting p-values to FDR values, and selecting genes with FDR < 0.05 and tumor-normal median log2 fold change greater 0.5. We then used geneProfiler to assess the pathways and transcription factor motifs enriched in these genes.
+
+\subsubsection{Clinical/subtype association testing}
+Using the aggregate Rb phosphorylation score, we grouped tumor samples into phospho-Rb high (>75\% percentile of Rb phosphorylation score), phospho-Rb low (<25\% percentile of Rb phosphorylation score) and phospho-Rb mid (>25\% percentile and <75\% percentile). For each cancer type, chi-squared tests were used to test the association between Rb phosphorylation status and clinical features. Additionally, we collected the significantly mutated genes (SMGs) for each cancer type from previous CPTAC papers and created groups based on the mutation and copy number status of each SMG (see ``RB1 genetic alteration groups''). Chi-squared tests were used to test the association between Rb phosphorylation and SMG alteration groups. Similarly, we tested the association between p300 acetylation and clinical features as well as SMG alteration status. Associations with p < 0.05 were considered significant.
+
+
+\subsection{Spatial PTM-mutation cluster analysis}
+
+\subsubsection{Running HotPTM}
+We prepared the inputs to HotPTM by first compiling all somatic mutations from CPTAC and TCGA MC3 data, as well as all CPTAC PTM sites (acetylation, ubiquitylation, phosphorylation). Each step of the Hotspot3D pipeline was run separately with the following parameters:
+\begin{itemize}
+    \item hotspot3d search: \texttt{--3d-distance-cutoff 20}
+    \item hotspot3d cluster: \texttt{--3d-distance-cutoff 20}, \texttt{--vertex-type recurrence}
+\end{itemize}
+Additionally, the ``hotspot3d summary'' command was run to obtain a summary file of the results.
+
+\subsubsection{HotPTM cluster filtering}
+For each cluster, a cluster closeness score was computed as the sum of the closeness centrality values for each mutation and PTM site present in the cluster. We then selected mutation-PTM (hybrid) clusters in the top 5\% percentile of cluster closeness scores and containing at least one cancer driver gene \cite{baileymh_dingl:ComprehensiveCharacterization2018}. These 59 clusters were then manually reviewed to obtain 47 clusters of interest with known functional mutations and/or PTMs from the literature.
+
+\subsubsection{HotPTM cluster visualization}
+The ``hotspot3d visual'' command was used to generate pml files for individual clusters, which were then run in PyMOL to visualize these clusters on 3D protein structures from the Protein Data Bank.
 
 \defaultlists
