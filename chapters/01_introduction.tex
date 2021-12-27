@@ -82,11 +82,6 @@ However, the data harmonization ultimately changes the final output of the genom
 
 
 \subsection{Annotation difference and cross-reference}
-% gene annotation difference
-%     gene symbol
-%     gene version
-%     annotation across different data types
-
 There are a few ``camps'' of annotation systems that curate and maintain biological identifiers (IDs) used by many human databases and datasets, including Ensembl \cite{howekl_flicekp:Ensembl20212021}, RefSeq \cite{olearyna_pruittkd:ReferenceSequence2016}, NCBI/Entrez Gene \cite{maglottd_tatusovat:EntrezGene2011}, and UniProt \cite{batemana_zhangj:UniProtUniversal2017}.
 Each camp, or each annotation system, is a comprehensive set of annotations independently, containing gene-level, transcript-level, and protein-level information using their own systems of IDs.
 Some commonly used identifies are shown in \tref{tab:intro-anno}.
@@ -95,23 +90,15 @@ Moreover, the mappability of two IDs may change based on whether the sequence id
 Therefore, the challenges for ID mappability, also known as the cross-reference, can be categorized as below:
 \begin{itemize}
     \item Cross-reference between annotation systems
-    \item Cross-reference across versions of the different versions of the same annotation systems
+    \item Cross-reference across different versions of the same annotation systems
     \item Cross-reference with and without sequence (RNA and protein) identity
 \end{itemize}
 Each scenario requires different solutions and may generate different ID mappings.
 
-The cross-reference between annotation systems is the most common scenario and there have been multiple solutions existed for end users to convert their identifiers freely \cite{shermanbt_lempickira:DAVIDKnowledgebase2007, zhangj_kasprzyka:BioMartData2011, smedleyd_kasprzyka:BioMartCommunity2015}.
-However many existing solutions built by external parties have not been updated and the mapping results are outdated.
-
-
-
-
-% Gene naming \cite{fujiyoshik_oginos:OpinionStandardizing2021, brufordea_tweedies:GuidelinesHuman2020} \tref{tab:intro-anno}
-
 \begin{SingleSpace}
 \begin{table}[tbp]
     \centering
-    \caption{Comparison of commonly used annotations. The bolded part of the identifiers denote their versioning schemes.}
+    \caption{Comparison of commonly used annotations using \gene{EGFR} as an example. The bolded part of the identifiers denote their versioning schemes.}
     \label{tab:intro-anno}
 
     \footnotesize
@@ -193,7 +180,7 @@ However many existing solutions built by external parties have not been updated 
                 \item Lack genomic location
                 \item Hard to work on old releases
             \end{tablist}\\
-            UniProt isoform & P00533\textbf{-1.v2}          & Stable &
+            UniProt isoform & P00533\textbf{-1.v2}          & Unstable &
             \begin{tablist}
                 \item Rarely in use
             \end{tablist}\\
@@ -209,6 +196,26 @@ However many existing solutions built by external parties have not been updated 
     \end{subtable}
 \end{table}
 \end{SingleSpace}
+
+The cross-reference between annotation systems is the most common scenario and there have been multiple solutions existed for end users to convert their identifiers freely \cite{shermanbt_lempickira:DAVIDKnowledgebase2007, zhangj_kasprzyka:BioMartData2011, smedleyd_kasprzyka:BioMartCommunity2015}.
+However many existing solutions built by external parties have not been updated and the mapping results are outdated.
+Another scenario aries from the annotation changes over time.
+Most annotation systems produces regular releases and thus have versions of their identifiers.
+In some cases the versioning is not obvious for end users and are often not tracked.
+Particularly at protein level shown in \tref{tab:intro-anno-protein}, the most commonly used UniProt IDs don't display their sequence versions by default.
+As a results, datasets made at a different time often use different versions of the same annotation systems.
+Finally, many cross-reference mappings are not built to map with sequence identity.
+In many multi-omics applications, sequence identity is required to map the annotations.
+For example, variant annotations and PTM sites require precise relative position on the sequence of the identifier.
+
+An real world example includes converting the protein IDs of GATA3 from Ensembl to RefSeq and UniProt.
+From the online ID conversion tools, ENSP00000368632.3 can be mapped to NP\_002042 and NP\_001002295 in RefSeq, and to P23771 in UniProt.
+However, while considering the protein sequence identity, ENSP00000368632.3 should only match NP\_001002295.1 in RefSeq, and the non-canonical form of UniProt P23771-2.v1.
+The other IDs don't have the exact same protein sequence because of an amino acid deletion.
+In the cases where the dataset does not keep track of the ID version, mapping with sequence identity will be more difficult to check.
+
+In a multi-omics dataset, it is common to see anontations of different systems or versions being used, due to the different data processing pipeline have a different preferred annotations.
+Therefore, for a multi-omics datasets to be re-useable and further integrated with other datasets, the annotations need to be fixed to one annotation or harmonized.
 
 
 \subsection{Unaccounted batch effects}
